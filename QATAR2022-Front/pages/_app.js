@@ -7,7 +7,8 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <title key="title">Soy Desarrollador</title>
+        <title key="title">Prode Qatar 2022</title>
+        <link rel="icon" href="/faviconCopa.png" />
         <meta key="description" name="description" content="Contactame!" />
       </Head>
       <Layout>
