@@ -11,7 +11,7 @@ function GroupFixture(props) {
       const roundNumber3 = props.fixtureData.filter((match) => match.RoundNumber === 3);
 
     return (
-        <div className="m-8 sm:mx-16 md:mx-8 grid grid-cols-1 gap-2">
+        <div className="m-8 sm:mx-16 lg:mx-20 grid grid-cols-1 gap-2">
             <div className="">
                 <FixtureCard title="Fecha 1" roundMatches={roundNumber1} countriesData={props.countriesData}/>
             </div>
