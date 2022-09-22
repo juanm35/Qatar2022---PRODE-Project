@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import Head from "next/head";
-import Menu from '../components/Menu';
+import Layout from '../components/Layout';
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -10,8 +10,9 @@ export default function MyApp({ Component, pageProps }) {
         <title key="title">Soy Desarrollador</title>
         <meta key="description" name="description" content="Contactame!" />
       </Head>
-      <Menu/>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }

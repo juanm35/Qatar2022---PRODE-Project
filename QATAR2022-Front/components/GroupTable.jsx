@@ -4,7 +4,7 @@ import GroupTableRow from './GroupTableRow'
 function Group(props) {
 
     return (
-            <div className="m-4 sm:m-8">
+            <div className="m-4 sm:m-8 bg-transparent/[0.4] rounded-xl pt-0 pr-2.5 pb-5 pl-6" >
                 <br/>
                 <div className="text-white"> {props.title} </div>
                 <table id="" className="text-white">

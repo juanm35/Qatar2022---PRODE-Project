@@ -15,12 +15,13 @@ export default function Home() {
   const fixtureGroupH =  Fixture.data.filter((match) => match.Group === "Group H");
 
   return (
-    <div className=" bg-qatarRed">
+    <div className="bg-qatar bg-complete">
+     <div className="pt-20 bg-transparent/[0.3]">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <h1 className='text-white text-8xl w-full text-center pt-16'><em>Da PRODE</em></h1>
+        <h1 className='text-white text-4xl md:text-8xl w-full text-center pt-16'><em>Da PRODE</em></h1>
         <div className='grid grid-cols-1 md:grid-cols-2'>
           <Group group="Grupo A" countriesData={Countries.groupA} fixtureData={fixtureGroupA}/>
           <Group group="Grupo B" countriesData={Countries.groupB} fixtureData={fixtureGroupB}/>
@@ -31,7 +32,7 @@ export default function Home() {
           <Group group="Grupo G" countriesData={Countries.groupG} fixtureData={fixtureGroupG}/>
           <Group group="Grupo H" countriesData={Countries.groupH} fixtureData={fixtureGroupH}/>
         </div>
-      
+        </div>
     </div>
   )
 }
