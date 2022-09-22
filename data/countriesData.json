@@ -1,0 +1,51 @@
+
+    {   
+        "groupA": [
+            {"name": "Qatar", "flag": "https://countryflagsapi.com/svg/qa"},
+            {"name": "Ecuador", "flag": "https://countryflagsapi.com/svg/ec"},
+            {"name": "Senegal", "flag": "https://countryflagsapi.com/svg/sn"},
+            {"name": "Holanda", "flag": "https://countryflagsapi.com/svg/nl"}
+        ],
+        "groupB": [
+            {"name": "Inglaterra", "flag": "https://countryflagsapi.com/svg/gb-eng"},
+            {"name": "Iran", "flag": "https://countryflagsapi.com/svg/ir"},
+            {"name": "USA", "flag": "https://countryflagsapi.com/svg/us"},
+            {"name": "Gales", "flag": "http://countryflagsapi.com/svg/gb-wls"}
+        ],
+        "groupC": [
+            {"name": "Argentina", "flag": "https://countryflagsapi.com/svg/ar"},
+            {"name": "Arabia Saudita", "flag": "https://countryflagsapi.com/svg/sa"},
+            {"name": "Mexico", "flag": "https://countryflagsapi.com/svg/mx"},
+            {"name": "Polonia", "flag": "https://countryflagsapi.com/svg/pl"}
+        ],
+        "groupD": [
+            {"name": "Francia", "flag": "https://countryflagsapi.com/svg/fr"},
+            {"name": "Australia", "flag": "https://countryflagsapi.com/svg/au"},
+            {"name": "Dinamarca", "flag": "https://countryflagsapi.com/svg/dk"},
+            {"name": "Tunez", "flag": "https://countryflagsapi.com/svg/tn"}
+        ],
+        "groupE": [
+            {"name": "España", "flag": "https://countryflagsapi.com/svg/es"},
+            {"name": "Costa Rica", "flag": "https://countryflagsapi.com/svg/cr"},
+            {"name": "Alemania", "flag": "https://countryflagsapi.com/svg/de"},
+            {"name": "Japon", "flag": "https://countryflagsapi.com/svg/jp"}
+        ],
+        "groupF": [
+            {"name": "Belgica", "flag": "https://countryflagsapi.com/svg/be"},
+            {"name": "Canada", "flag": "https://countryflagsapi.com/svg/ca"},
+            {"name": "Marruecos", "flag": "https://countryflagsapi.com/svg/ma"},
+            {"name": "Croacia", "flag": "https://countryflagsapi.com/svg/hr"}
+        ],
+        "groupG": [
+            {"name": "Brasil", "flag": "https://countryflagsapi.com/svg/br"},
+            {"name": "Serbia", "flag": "https://countryflagsapi.com/svg/rs"},
+            {"name": "Suiza", "flag": "https://countryflagsapi.com/svg/ch"},
+            {"name": "Camerun", "flag": "https://countryflagsapi.com/svg/cm"}
+        ],
+        "groupH": [
+            {"name": "Portugal", "flag": "https://countryflagsapi.com/svg/pt"},
+            {"name": "Ghana", "flag": "https://countryflagsapi.com/svg/gh"},
+            {"name": "Uruguay", "flag": "https://countryflagsapi.com/svg/uy"},
+            {"name": "Corea del sur", "flag": "https://countryflagsapi.com/svg/kr"}
+    ]
+    } 
