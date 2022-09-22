@@ -13,6 +13,7 @@ module.exports = {
         qatarPink: '#ff004c',
         qatarDarkBlue: '#314665',
         qatarDarkBlueTransparent: 'rgba(49, 70, 101, 0.95)',
+        qatarGold: 'rgb(137,104,31, 0.6)',
 
       },
       boxShadow: {

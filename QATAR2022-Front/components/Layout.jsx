@@ -21,20 +21,20 @@ export default function Layout({ children }) {
 
   return (
       <>
-        <div className={`${navbar? "bg-qatarDarkBlueTransparent" : "bg-transparent"} flex items-center text-lg h-20 w-full border-b-green border-qatarPink text-white text-center -mb-20 fixed z-10`}>
-          <div className="flex w-full justify-between pl-16 pr-32">
-            <div className="cursor-pointer">
-              Logo
-            </div>
-            <div className="flex justify-between gap-4">
-              <Link href="/" className="cursor-pointer">
-                <a>Home</a>
+        <div className={`${navbar? "bg-qatarDarkBlueTransparent" : "bg-transparent"} flex items-center text-lg h-24 w-full border-b-green border-qatarPink text-white text-center -mb-20 fixed z-10`}>
+          <div className="flex w-full h-full justify-between pl-16 pr-32 items-center">
+            <Link href="/" className="cursor-pointer">
+              <a><img src="/logoQatar2.svg"/></a>
+            </Link>
+            <div className="flex justify-between h-full w-2/5">
+              <Link href="/" className="cursor-pointer ">
+                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8`}>Home</a>
               </Link>
               <Link href="/miProde" className="cursor-pointer">
-                <a>Mi Prode</a>
+                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8`}>Mi Prode</a>
               </Link>
               <Link href="/resultados" className="cursor-pointer">
-                <a>Resultados</a>
+                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8`}>Resultados</a>
               </Link>
             </div>
           </div>    

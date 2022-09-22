@@ -18,8 +18,8 @@ export default function Home() {
     <div className="bg-qatar bg-complete">
      <div className="pt-20 bg-transparent/[0.3]">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Prode Qatar 2022</title>
+        <link rel="icon" href="/faviconCopa.png" />
       </Head>
         <h1 className='text-white text-4xl md:text-8xl w-full text-center pt-16'><em>Da PRODE</em></h1>
         <div className='grid grid-cols-1 md:grid-cols-2'>
