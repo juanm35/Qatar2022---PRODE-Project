@@ -14,7 +14,7 @@ function GroupRow(props) {
             <td>{props.Loses}</td>
             <td>{props.goals}</td>
             <td>{props.goalsReceived}</td>
-            <td>{props.goals - props.goalsReceived}</td>
+            <td>{(props.goals - props.goalsReceived)>0 ? `+${props.goals - props.goalsReceived}`: props.goals - props.goalsReceived}</td>
         </tr>
     );
   }

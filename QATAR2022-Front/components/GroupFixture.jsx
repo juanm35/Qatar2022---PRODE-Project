@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
 import FixtureCard from './FixtureCard'
 
 function GroupFixture(props) {
-    useEffect(() => {
-        console.log(props.fixtureData);
-      },[]);
 
       const roundNumber1 = props.fixtureData.filter((match) => match.RoundNumber === 1);
       const roundNumber2 = props.fixtureData.filter((match) => match.RoundNumber === 2);

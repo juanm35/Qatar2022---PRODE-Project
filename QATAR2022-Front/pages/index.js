@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Countries from '../data/countriesData.json'
 import Fixture from '../data/fixtureData.json'
 import Group from '../components/Group'
