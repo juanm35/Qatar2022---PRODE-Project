@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"
 import Link from 'next/link'
+import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
+    const router = useRouter();
 
     const [navbar, setNavbar] = useState(false)
 
@@ -28,13 +30,13 @@ export default function Layout({ children }) {
             </Link>
             <div className="flex justify-between h-full w-2/5">
               <Link href="/" className="cursor-pointer ">
-                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8`}>Home</a>
+                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/'? "font-bold underline" : "text-white"}`}>Home</a>
               </Link>
               <Link href="/miProde" className="cursor-pointer">
-                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8`}>Mi Prode</a>
+                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/miProde'? "font-bold underline" : "text-white"}`}>Mi Prode</a>
               </Link>
               <Link href="/resultados" className="cursor-pointer">
-                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8`}>Resultados</a>
+                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/resultados'? "font-bold underline" : "text-white"}`}>Resultados</a>
               </Link>
             </div>
           </div>    

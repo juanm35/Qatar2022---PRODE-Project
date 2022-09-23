@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="bg-qatar bg-complete">
      <div className="pt-20 bg-transparent/[0.3]">
-        <h1 className='text-white text-4xl md:text-8xl w-full text-center pt-16'><em>Da PRODE</em></h1>
+        <h1 className='text-white text-4xl md:text-8xl w-full text-center pt-12 pb-12'><em>Da PRODE</em></h1>
         <div className='grid grid-cols-1 md:grid-cols-2'>
           <Group group="Grupo A" countriesData={Countries.groupA} fixtureData={fixtureGroupA}/>
           <Group group="Grupo B" countriesData={Countries.groupB} fixtureData={fixtureGroupB}/>
