@@ -1,16 +1,17 @@
 
 import GroupTableRow from './GroupTableRow'
-import React, { useEffect } from 'react';
 
 function Group(props) {
     function comparePoints(a, b) {
         return (b.wins*3+b.ties) - (a.wins*3+a.ties);
     }
-    const orderedCountriesData = props.countriesData.sort(comparePoints)
-    useEffect(() => {
-      
-        console.log('RESFFFF', props.countriesFullData);
-      },[]);
+    function compareScoreDiff(a, b) {
+        return (b.positiveScore-b.negativeScore) - (a.positiveScore-a.negativeScore);
+    }
+    function comparePositiveScore(a, b) {
+        return b.positiveScore - a.positiveScore;
+    }
+    const orderedCountriesData = props.countriesData.sort(comparePositiveScore).sort(compareScoreDiff).sort(comparePoints)
     return (
             <div className="m-4 sm:m-8 bg-transparent/[0.4] rounded-xl pt-0 pr-2.5 pb-5 pl-6" >
                 <br/>

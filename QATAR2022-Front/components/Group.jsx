@@ -1,6 +1,5 @@
 import GroupTable from '../components/GroupTable'
 import GroupFixture from '../components/GroupFixture'
-import React, { useEffect } from 'react';
 
 export default function Group(props) {
   const matchResults = props.fixtureData.map((match) => {
@@ -38,11 +37,6 @@ export default function Group(props) {
     }, 0);
     return {...country, wins, looses, ties, positiveScore, negativeScore};
   })
-
-  useEffect(() => {
-      
-      console.log('RES', CountriesFullData);
-    },[]);
   
   return (
         <div>
