@@ -24,7 +24,7 @@ export default function Layout({ children }) {
         <div className={`${navbar? "bg-qatarDarkBlueTransparent" : "bg-transparent"} flex items-center text-lg h-24 w-full border-b-green border-qatarPink text-white text-center -mb-20 fixed z-10`}>
           <div className="flex w-full h-full justify-between pl-16 pr-32 items-center">
             <Link href="/" className="cursor-pointer">
-              <a><img src="/logoQatar2.svg"/></a>
+              <a><img src={navbar? "/logoQatarRed.svg" : "/logoQatarWhite.svg"}/></a>
             </Link>
             <div className="flex justify-between h-full w-2/5">
               <Link href="/" className="cursor-pointer ">
