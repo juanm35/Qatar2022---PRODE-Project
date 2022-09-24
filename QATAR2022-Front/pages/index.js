@@ -4,14 +4,14 @@ import Group from '../components/Group'
 
 export default function Home() {
 
-  const fixtureGroupA =  Fixture.data.filter((match) => match.Group === "Group A");
-  const fixtureGroupB =  Fixture.data.filter((match) => match.Group === "Group B");
-  const fixtureGroupC =  Fixture.data.filter((match) => match.Group === "Group C");
-  const fixtureGroupD =  Fixture.data.filter((match) => match.Group === "Group D");
-  const fixtureGroupE =  Fixture.data.filter((match) => match.Group === "Group E");
-  const fixtureGroupF =  Fixture.data.filter((match) => match.Group === "Group F");
-  const fixtureGroupG =  Fixture.data.filter((match) => match.Group === "Group G");
-  const fixtureGroupH =  Fixture.data.filter((match) => match.Group === "Group H");
+  const fixtureGroupA =  Fixture.data.filter((match) => match.Group === "groupA");
+  const fixtureGroupB =  Fixture.data.filter((match) => match.Group === "groupB");
+  const fixtureGroupC =  Fixture.data.filter((match) => match.Group === "groupC");
+  const fixtureGroupD =  Fixture.data.filter((match) => match.Group === "groupD");
+  const fixtureGroupE =  Fixture.data.filter((match) => match.Group === "groupE");
+  const fixtureGroupF =  Fixture.data.filter((match) => match.Group === "groupF");
+  const fixtureGroupG =  Fixture.data.filter((match) => match.Group === "groupG");
+  const fixtureGroupH =  Fixture.data.filter((match) => match.Group === "groupH");
 
   return (
     <div className="bg-qatar bg-complete">
