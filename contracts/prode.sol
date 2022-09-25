@@ -1,16 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-// IMPORTS
-// OZ ownable/access enumerable
-// OZ ERC20 (SafeERC20 and IERC20)
-// import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
-
-
-// Token saver?
-// Lending protocol interface? AAVE?
-// Signature checker?
-
 /*
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -104,6 +94,9 @@ Y]iLLuUPzkmad#@@@####BBB#@@@@@@@@@@@G::L}}}ccu}v;^)\xLL}CzUR806dMKIXIHq3XIwyyyVV
 x)xoGjTucVom6@@@@BQQQBBB##@@@@@@@@@B~!=}}uTTTYLx|v(|xxxxLVs0gGwcVsIUKGGKheheICyVyywyujCCCohWHPUICV~===^v)v]y$$bVTx*~*]Lx
 */
 
+// Token saver?
+// Lending protocol interface? AAVE?
+
 import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -117,7 +110,7 @@ contract Prode is AccessControlEnumerable {
     error AlreadyWhitelistedError();
     error OutOfBoundsError();
     error LengthMismatchError();
-    error ResultLoadBlockedError();
+    error SetTimeEndedError();
     error ZeroAmountError();
     error WithoutRewardsError();
     error AlreadyDepositedError();
@@ -134,7 +127,6 @@ contract Prode is AccessControlEnumerable {
     event UserResultsSet(address user, uint256[] games);
     event RewardWinners(address first, address second, address third);
 
-    // TODO implement phases change by the admins
     enum Phase { Registration, Playing, Finished }
     
     Phase public phase;
@@ -257,7 +249,7 @@ contract Prode is AccessControlEnumerable {
 
         whitelist[_user] = true;
         users.push(_user);
-        Whitelisted(_user);
+        emit Whitelisted(_user);
     }
 
     function removeFromWhitelist(uint256 _index) external onlyMessiRole {
@@ -267,7 +259,7 @@ contract Prode is AccessControlEnumerable {
         whitelist[users[_index]] = false;
         users[_index] = users[users.length - 1];
         users.pop();
-        RemovedFromWhitelist(users[_index]);
+        emit RemovedFromWhitelist(users[_index]);
     }
 
     // this function is used for depositing the token
@@ -278,7 +270,6 @@ contract Prode is AccessControlEnumerable {
             revert WrongPhaseError();
         }
 
-        // TODO check if can deposit in AAVE 
         if (_amount == 0) {
             revert ZeroAmountError();
         }
@@ -300,7 +291,6 @@ contract Prode is AccessControlEnumerable {
             revert WrongPhaseError();
         }
 
-        // TODO see if extra check is needed
         if (rewards[_msgSender()] == 0) {
             revert WithoutRewardsError();
         }
@@ -354,7 +344,7 @@ contract Prode is AccessControlEnumerable {
         for(i = 0; i <= _games.length; i++) {
             // only load result if it is not loaded already
             if (userResults[msg.sender].loaded || block.timestamp + closingTime > uint256(results[_games].date)) {
-                revert ResultLoadBlockedError();
+                revert SetTimeEndedError();
             }
 
             userResults[msg.sender].homeTeamScore = _results[_games[i]].homeTeamScore;
