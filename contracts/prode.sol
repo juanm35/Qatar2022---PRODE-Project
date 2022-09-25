@@ -113,6 +113,7 @@ contract Prode is AccessControlEnumerable {
 
     error NotMessiRole();
     error TimestampOutOfRange();
+    error PhaseNotDefinedError();
     error AlreadyWhitelistedError();
     error OutOfBoundsError();
     error LengthMismatchError();
@@ -120,16 +121,30 @@ contract Prode is AccessControlEnumerable {
     error ZeroAmountError();
     error WithoutRewardsError();
     error AlreadyDepositedError();
-    error PlayerNotWhitelistedError();
+    error UserNotWhitelistedError();
+    error WrongPhaseError();
 
-    event Whitelisted(address indexed player);
-    event RemovedFromWhitelist(address indexed player);
-    event ResultLoaded(uint8 game);
-    event ResultsLoaded(uint8[] games);
-    event PlayerResultsLoaded(address player, uint8[] games);
+    event Whitelisted(address indexed user);
+    event PhaseChanged(Phase indexed phase);
+    event RemovedFromWhitelist(address indexed user);
+    event DepositConfirmed(address indexed user, uint256 amount);
+    event RewardClaimed(address indexed user, uint256 amount);
+    event ResultSet(uint256 game);
+    event ResultsSet(uint256[] games);
+    event UserResultsSet(address user, uint256[] games);
+    event RewardWinners(address first, address second, address third);
 
-    // TODO implement phases
-    enum Phase { prestart, group, playoffs, finished }
+    // TODO implement phases change by the admins
+    enum Phase { Registration, Playing, Finished }
+    
+    Phase public phase;
+
+    struct Game {
+        uint256 homeTeamScore;
+        uint256 awayTeamScore;
+        uint64 date; // timestamp
+        bool loaded;
+    }
 
     address public immutable token;
     uint256 public immutable depositAmount;
@@ -137,45 +152,38 @@ contract Prode is AccessControlEnumerable {
     uint256 public immutable secondPercentage;
     uint256 public immutable thirdPercentage;
 
-    struct Game {
-        uint8 goals1;
-        uint8 goals2;
-        bool loaded;
-        uint64 startTime; // can use minus 30 min or something like this, also the end time to load the result (maybe this second one does not makes sense)
-    }
-
     // MESSI IS THE GOAT 🐐
     // ADDRESSES WITH THIS ROLE CAN DO ADMIN SHIT
     bytes32 public constant MESSI_ROLE = keccak256("MESSI");
+    
+    uint256 public constant closingTime = 30*60; // Thirty minutes
 
-    uint256 public constant loadBlockerTime = 30*60; // Thirty minutes
-
-    // player => whitelisted
+    // user => whitelisted
     mapping(address => bool) whitelist;
     
-    // player => array of Game structs
-    mapping(address => Game[64]) playerResults;
+    // user => array of Game structs
+    mapping(address => Game[64]) userResults;
     
-    // player => points
+    // user => points
     mapping(address => uint256) scores;
 
     // array of Game structs
     Game[64] results; // first 48 matches are from the group phase, the rest from playoffs
 
-    // array of players to iterate on
-    address[] players;
+    // array of users to iterate on
+    address[] users;
 
-    // player => deposit
+    // user => deposit
     mapping(address => uint) deposits;
 
     uint256 public totalDeposits;
 
-    // player => reward amount
+    // user => reward amount
     mapping(address => uint) rewards;
 
     modifier onlyWhitelisted() {
         if (!whitelist[_msgSender()]) {
-            revert PlayerNotWhitelistedError();
+            revert UserNotWhitelistedError();
         }
         _;
     }
@@ -191,7 +199,7 @@ contract Prode is AccessControlEnumerable {
         address _token,
         uint256[] _percentages,
         uint256 _depostitAmount,
-        uint64[] _timestamps
+        uint64[] _dates
     ) {
         // set token (DAI, USDT, USDC)
         token = _token;
@@ -209,46 +217,67 @@ contract Prode is AccessControlEnumerable {
         _setupRole(MESSI_ROLE, msg.sender);
 
         // set all matches start time on deployment
-        loadTimestamps(_timestamps);
+        setDates(_dates);
     }
 
-    function loadTimestamps(uint64[] _timestamps) internal {
-        if(_timestamps.length != 64) {
+    function setDates(uint64[] _dates) internal onlyMessiRole {
+        if(_dates.length != 64) {
             revert LengthMismatchError();
         }
 
-        for(i = 0; i <= timestamps.length; i++) {
-            if (_timestamps[i] < uint64(1668960000) || _timestamps[i] > uint64(1671375600)) {
+        for(i = 0; i <= _dates.length; i++) {
+            if (_dates[i] < uint64(1668960000) || _dates[i] > uint64(1671375600)) {
                 revert TimestampOutOfRange();
             }
-            results[i].startTime = _timestamps[i];
+            results[i].date = _dates[i];
         }
     }
 
+    function setPhase(uint256 _phase) external onlyMessiRole {
+        if (_phase == 0) {
+            phase = Phase.Registration;
+        } else if (_phase == 1) {
+            phase = Phase.Playing;
+        } else if (_phase == 2) {
+            phase = Phase.Finished;
+        } else {
+            revert PhaseNotDefinedError();
+        }
+        emit PhaseChanged(phase);
+    }
 
-    function whitelist(address _player) external onlyMessiRole {
-        if (whitelist[_player]) {
+    function whitelist(address _user) external onlyMessiRole {
+        if (phase != Phase.Registration) {
+            revert WrongPhaseError();
+        }
+
+        if (whitelist[_user]) {
             revert AlreadyWhitelistedError();
         }
-        whitelist[_player] = true;
-        players.push(_player);
-        Whitelisted(_player);
+
+        whitelist[_user] = true;
+        users.push(_user);
+        Whitelisted(_user);
     }
 
     function removeFromWhitelist(uint256 _index) external onlyMessiRole {
-        if (_index > players.length - 1) {
+        if (_index > users.length - 1) {
             revert OutOfBoundsError();
         }
-        whitelist[players[_index]] = false;
-        players[_index] = players[players.length - 1];
-        players.pop();
-        RemovedFromWhitelist(players[_index]);
+        whitelist[users[_index]] = false;
+        users[_index] = users[users.length - 1];
+        users.pop();
+        RemovedFromWhitelist(users[_index]);
     }
 
     // this function is used for depositing the token
     // could be used to directly deposit the stablecoin and then to the lending protocol
     // OR could deposit directly the lending token
-    function playerDeposit(uint _amount) external onlyWhitelisted {
+    function deposit(uint _amount) external onlyWhitelisted {
+        if (phase != Phase.Registration) {
+            revert WrongPhaseError();
+        }
+
         // TODO check if can deposit in AAVE 
         if (_amount == 0) {
             revert ZeroAmountError();
@@ -263,10 +292,14 @@ contract Prode is AccessControlEnumerable {
 
         totalDeposits += _amount;
         deposits[_msgSender()] += _amount;
-        // TODO emit event
+        emit DepositConfirmed(_msgSender(), _amount);
     }
 
-    function playerClaim() external onlyWhitelisted {
+    function claimReward() external onlyWhitelisted {
+        if (phase != Phase.Finished) {
+            revert WrongPhaseError();
+        }
+
         // TODO see if extra check is needed
         if (rewards[_msgSender()] == 0) {
             revert WithoutRewardsError();
@@ -275,73 +308,84 @@ contract Prode is AccessControlEnumerable {
         uint256 claimAmount = rewards[_msgSender()];
         rewards[_msgSender()] == 0;
         IERC20(token).safeTransferFrom(address(this), _msgSender(), claimAmount);
-        // TODO emit claim event
+        emit RewardClaimed(_msgSender(), claimAmount);
     }
 
     // Load only one result at a time
-    function loadResult(uint8 _games, Game _result) external onlyMessiRole {
-        results[_games].goals1 = _result.goals1;
-        results[_games].goals2 = _result.goals2;
+    function setResult(uint256 _games, Game _result) external onlyMessiRole {
+        if (phase != Phase.Playing) {
+            revert WrongPhaseError();
+        }
+
+        results[_games].homeTeamScore = _result.homeTeamScore;
+        results[_games].awayTeamScore = _result.awayTeamScore;
         results[_games].loaded = _result.loaded;
-        results[_games].startTime = _result.startTime;
-        emit ResultLoaded(_games);
+        results[_games].date = _result.date;
+        emit ResultSet(_games);
     }
 
     // load multiple results without changing the timestamp
-    function loadResults(uint8[] _games, Game[] _results) external onlyMessiRole {
+    function setResults(uint256[] _games, Game[] _results) external onlyMessiRole {
+        if (phase != Phase.Playing) {
+            revert WrongPhaseError();
+        }
+
         if(_games.length != _results.length) {
             revert LengthMismatchError();
         }
 
         for(i = 0; i <= _games.length; i++) {
-            results[_games[i]].goals1 = _results[_games[i]].goals1;
-            results[_games[i]].goals2 = _results[_games[i]].goals2;
+            results[_games[i]].homeTeamScore = _results[_games[i]].homeTeamScore;
+            results[_games[i]].awayTeamScore = _results[_games[i]].awayTeamScore;
             results[_games[i]].loaded = true;
         }
-        emit ResultsLoaded(_games);
+        emit ResultsSet(_games);
     }
 
-    // TODO load multiple results
-    function loadPlayerResults(uint8[] _games, Game[] _results) external onlyWhitelisted {
+    function userSetResults(uint256[] _games, Game[] _results) external onlyWhitelisted {
+        if (phase != Phase.Playing) {
+            revert WrongPhaseError();
+        }
+
         if(_games.length != _results.length) {
             revert LengthMismatchError();
         }
 
         for(i = 0; i <= _games.length; i++) {
             // only load result if it is not loaded already
-            if (playerResults[msg.sender].loaded || block.timestamp + loadBlockerTime > uint256(results[_games].startTime)) {
+            if (userResults[msg.sender].loaded || block.timestamp + closingTime > uint256(results[_games].date)) {
                 revert ResultLoadBlockedError();
             }
 
-            playerResults[msg.sender].goals1 = _results[_games[i]].goals1;
-            playerResults[msg.sender].goals2 = _results[_games[i]].goals2;
-            playerResults[msg.sender].loaded = true;
+            userResults[msg.sender].homeTeamScore = _results[_games[i]].homeTeamScore;
+            userResults[msg.sender].awayTeamScore = _results[_games[i]].awayTeamScore;
+            userResults[msg.sender].loaded = true;
         }
         
-        emit PlayerResultsLoaded(msg.sender, _games);
+        emit UserResultsSet(msg.sender, _games);
     }
 
     // TODO check for efficiently comparing and storing score (cumulative counter to)
     // TODO any additional rules regarding goals points or other stuff
     // CAN CALL THIS FUNCTION FROM THE FRONT AND ONLY FROM THE CONTRACT WHEN THE WORLD CUP IS FINISHED
-    function score(address _player) public view returns(uint256) {
+    function score(address _user) public view returns(uint256) {
         uint256 score;
         
         for(uint256 i = 0; i <= results.length; i++) {
             if (
                 // Guessing exact result
-                playerResults[_player].Game[i].goals1 == results.Game[i].goals1 &&
-                playerResults[_player].Game[i].goals2 == results.Game[i].goals2
+                userResults[_user].Game[i].homeTeamScore == results.Game[i].homeTeamScore &&
+                userResults[_user].Game[i].awayTeamScore == results.Game[i].awayTeamScore
             ) {
                 score += 3;
             } else if (
                 // Guessing the winner or draw (not exact result)
-                (playerResults[_player].Game[i].goals1 == playerResults[_player].Game[i].goals2 &&
-                results.Game[i].goals1 == results.Game[i].goals2) ||
-                (playerResults[_player].Game[i].goals1 > playerResults[_player].Game[i].goals2 &&
-                results.Game[i].goals1 > results.Game[i].goals2) ||
-                (playerResults[_player].Game[i].goals1 < playerResults[_player].Game[i].goals2 &&
-                results.Game[i].goals1 < results.Game[i].goals2)
+                (userResults[_user].Game[i].homeTeamScore == userResults[_user].Game[i].awayTeamScore &&
+                results.Game[i].homeTeamScore == results.Game[i].awayTeamScore) ||
+                (userResults[_user].Game[i].homeTeamScore > userResults[_user].Game[i].awayTeamScore &&
+                results.Game[i].homeTeamScore > results.Game[i].awayTeamScore) ||
+                (userResults[_user].Game[i].homeTeamScore < userResults[_user].Game[i].awayTeamScore &&
+                results.Game[i].homeTeamScore < results.Game[i].awayTeamScore)
             ) {
                 score += 1;
             }
@@ -352,50 +396,58 @@ contract Prode is AccessControlEnumerable {
 
     function scores() public view returns(address[], uint256[]) {
         uint256[] memory _scores;
-        for (uint256 i = 0; i <= players.length; i++) {
-            _scores.push(computeScore(players[i]));
+        for (uint256 i = 0; i <= users.length; i++) {
+            _scores.push(computeScore(users[i]));
         }
-        return (players, _scores);
+        return (users, _scores);
     }
 
     // This function maybe is not useful at all (when calculating rewards can do it on the fly)
     function computeScores() external onlyMessiRole {
-        for (uint256 i = 0; i <= players.length; i++) {
-            //scores.push(computeScore(players[i]));
-            scores[players[i]] = computeScore(players[i]);
+        if (phase != Phase.Finished) {
+            revert WrongPhaseError();
+        }
+
+        for (uint256 i = 0; i <= users.length; i++) {
+            //scores.push(computeScore(users[i]));
+            scores[users[i]] = computeScore(users[i]);
         }
     }
 
     // function that calculate rewards and enables users to claim them
     // be careful of a tie in the first, second and/or third positions
     function calculateRewards() external onlyMessiRole {
+        if (phase != Phase.Finished) {
+            revert WrongPhaseError();
+        }
+
         uint256[2] first;
         uint256[2] second;
         uint256[2] third;
-        for (uint256 i = 0; i <= players.length; i++) {
+        for (uint256 i = 0; i <= users.length; i++) {
             // here maybe is better to compute the score on the fly than to store it 
-            // scores[players[i]] (get them from storage)
-            uint256 _score = computeScore(players[i])
-            scores[players[i]] = _score;
+            // scores[users[i]] (get them from storage)
+            uint256 _score = computeScore(users[i])
+            scores[users[i]] = _score;
 
             if (_score > first[1]) {
                 first[1] = _score;
-                first[0] = players[i];
+                first[0] = users[i];
                 second[1] = first[1];
                 second[0] = first[0];
                 third[1] = second[1];
                 third[0] = second[0];
             } else if (_score > second[1]) {
                 second[1] = _score;
-                second[0] = players[i];
+                second[0] = users[i];
                 third[1] = second[1];
                 third[0] = second[0];
             } else if (_score > third[1]) {
                 third[1] = _score;
-                third[0] = players[i];
+                third[0] = users[i];
             } else {
                 // Check for more ties with the third place
-                // Here I could also keep on checking if they are equal to the third place and store them in an array
+                // TODO Here I could also keep on checking if they are equal to the third place and store them in an array
                 continue;
             }
         }
@@ -424,7 +476,7 @@ contract Prode is AccessControlEnumerable {
             rewards[second[0]] = totalDeposits * secondPercentage / 1e18;
             rewards[third[0]] = totalDeposits * thirdPercentage / 1e18;
         }
-        // TODO emit event with the three winning addresses
+        emit RewardWinners(first[0], second[0], third[0]);
     }
 
 }
