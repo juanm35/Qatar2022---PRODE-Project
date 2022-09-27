@@ -32,20 +32,20 @@ export default function Layout({ children }) {
 
   return (
       <>
-        <div className={`${navbar? "bg-qatarDarkBlueTransparent" : "bg-transparent"} flex justify-end items-center text-lg h-24 w-full border-b-green border-qatarPink text-white text-center -mb-20 fixed z-10`}>
+        <div className={`${navbar? "bg-qatarSilver/[0.95] text-qatarRed" : "bg-transparent text-white"} flex justify-end items-center text-lg h-24 w-full border-b-green border-qatarPink text-center -mb-20 fixed z-10`}>
           <div className="hidden md:flex md:w-full md:h-full md:justify-between md:pl-16 md:pr-32 md:items-center">
             <Link href="/" className="cursor-pointer">
               <a><img src={navbar? "/logoQatarRed.svg" : "/logoQatarWhite.svg"}/></a>
             </Link>
             <div className="flex justify-between h-full w-3/5 lg:w-2/5">
               <Link href="/" className="cursor-pointer ">
-                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/'? "font-bold underline" : "text-white"}`}>Home</a>
+                <a className={`${navbar? "hover:bg-qatarRed hover:text-white" : "hover:bg-qatarSilver hover:text-qatarRed"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/'? "font-bold underline" : ""}`}>Home</a>
               </Link>
               <Link href="/miProde" className="cursor-pointer">
-                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/miProde'? "font-bold underline" : "text-white"}`}>Mi Prode</a>
+                <a className={`${navbar? "hover:bg-qatarRed hover:text-white" : "hover:bg-qatarSilver hover:text-qatarRed"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/miProde'? "font-bold underline" : ""}`}>Mi Prode</a>
               </Link>
               <Link href="/resultados" className="cursor-pointer">
-                <a className={`${navbar? "hover:bg-qatarGold" : "hover:bg-qatarDarkBlue"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/resultados'? "font-bold underline" : "text-white"}`}>Resultados</a>
+                <a className={`${navbar? "hover:bg-qatarRed hover:text-white" : "hover:bg-qatarSilver hover:text-qatarRed"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/resultados'? "font-bold underline" : ""}`}>Resultados</a>
               </Link>
             </div>
           </div>
