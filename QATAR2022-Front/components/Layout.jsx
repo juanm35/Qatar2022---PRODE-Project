@@ -32,7 +32,7 @@ export default function Layout({ children }) {
 
   return (
       <>
-        <div className={`${navbar? "bg-qatarSilver/[0.95] text-qatarRed" : "bg-transparent text-white"} flex justify-end items-center text-lg h-24 w-full border-b-green border-qatarPink text-center -mb-20 fixed z-10`}>
+        <div className={`${navbar? "bg-qatarSilver/[0.95] text-qatarRed shadow-2xl" : "bg-transparent text-white"} flex justify-end items-center text-lg h-24 w-full border-b-green border-qatarRed text-center -mb-20 fixed z-10`}>
           <div className="hidden md:flex md:w-full md:h-full md:justify-between md:pl-16 md:pr-32 md:items-center">
             <Link href="/" className="cursor-pointer">
               <a><img src={navbar? "/logoQatarRed.svg" : "/logoQatarWhite.svg"}/></a>

@@ -12,7 +12,7 @@ function MatchCard(props) {
     return (
             <div className="text-black w-full p-2 bg-qatarSilver border rounded-lg hover:shadow-3xl">
                 <div onClick={handleCardClick} align="center" className="flex px-2 cursor-pointer">
-                    <div align="center" className="m-auto">{props.title}</div>
+                    <div align="center" className="m-auto">{props.title.toUpperCase()}</div>
                     <img align="center" src="/down-arrow.svg" className="w-3"/>
                 </div>
                 {showCard?
