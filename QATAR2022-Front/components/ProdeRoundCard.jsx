@@ -26,12 +26,12 @@ function ProdeRoundCard(props) {
     return (
             <div className="text-black px-0 py-4 w-11/12 sm:w-4/5 lg:w-3/5 mx-auto md:px-8 bg-qatarSilver border rounded-lg hover:shadow-3xl my-8">
                 <div align="center" className="flex px-2 cursor-pointer">
-                    <div align="center" className="m-auto text-2xl text-black font-bold">{props.title}</div>
+                    <div align="center" className="m-auto mt-4 text-3xl md:text-4xl text-black font-bold">{props.title}</div>
                 </div>
                 <div className='my-4'>
                     <div className='flex flex-col items-center md:flex-row gap-4 justify-center my-2 '>
-                        <div onClick={handleOrderDateClick} align="center" className='bg-qatarSilver p-2 text-qatarRed shadow-xl border-2 border-solid hover:bg-qatarRed hover:text-white rounded-lg cursor-pointer w-11/12 sm:w-1/4'>Por dia y hora</div>
-                        <div onClick={handleOrderMatchClick} align="center" className='bg-qatarSilver p-2 text-qatarRed shadow-xl border-2 border-solid hover:bg-qatarRed hover:text-white rounded-lg cursor-pointer w-11/12 sm:w-1/4'>Por n° partido</div>
+                        <div onClick={handleOrderDateClick} align="center" className='bg-qatarSilver p-2 text-qatarRed shadow-xl border-2 border-solid border-gray-200 hover:bg-qatarRed hover:text-white rounded-lg cursor-pointer w-11/12 sm:w-1/4'>Por dia y hora</div>
+                        <div onClick={handleOrderMatchClick} align="center" className='bg-qatarSilver p-2 text-qatarRed shadow-xl border-2 border-solid border-gray-200 hover:bg-qatarRed hover:text-white rounded-lg cursor-pointer w-11/12 sm:w-1/4'>Por n° partido</div>
                     </div>
                 </div>
                 {sortedGroupPhaseMatches.map((match,index) => 

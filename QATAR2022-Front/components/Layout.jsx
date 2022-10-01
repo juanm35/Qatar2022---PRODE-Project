@@ -33,19 +33,22 @@ export default function Layout({ children }) {
   return (
       <>
         <div className={`${navbar? "bg-qatarSilver/[0.95] text-qatarRed shadow-2xl" : "bg-transparent text-white"} flex justify-end items-center text-lg h-24 w-full border-b-green border-qatarRed text-center -mb-20 fixed z-10`}>
-          <div className="hidden md:flex md:w-full md:h-full md:justify-between md:pl-16 md:pr-32 md:items-center">
+          <div className="hidden md:flex md:w-full md:h-full md:justify-between md:pl-16 md:pr-6 lg:pr-12 xl:pr-32 md:items-center">
             <Link href="/" className="cursor-pointer">
               <a><img src={navbar? "/logoQatarRed.svg" : "/logoQatarWhite.svg"}/></a>
             </Link>
-            <div className="flex justify-between h-full w-3/5 lg:w-2/5">
+            <div className="flex justify-between h-full w-3/5 xl:w-2/5">
               <Link href="/" className="cursor-pointer ">
                 <a className={`${navbar? "hover:bg-qatarRed hover:text-white" : "hover:bg-qatarSilver hover:text-qatarRed"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/'? "font-bold underline" : ""}`}>Home</a>
               </Link>
               <Link href="/miProde" className="cursor-pointer">
-                <a className={`${navbar? "hover:bg-qatarRed hover:text-white" : "hover:bg-qatarSilver hover:text-qatarRed"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/miProde'? "font-bold underline" : ""}`}>Mi Prode</a>
+                <a className={`${navbar? "hover:bg-qatarRed hover:text-white" : "hover:bg-qatarSilver hover:text-qatarRed"} w-1/3 px-2 h-full py-8 text-xl whitespace-nowrap ${router.pathname === '/miProde'? "font-bold underline" : ""}`}>Mi Prode</a>
               </Link>
               <Link href="/resultados" className="cursor-pointer">
                 <a className={`${navbar? "hover:bg-qatarRed hover:text-white" : "hover:bg-qatarSilver hover:text-qatarRed"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/resultados'? "font-bold underline" : ""}`}>Resultados</a>
+              </Link>
+              <Link href="/reglas" className="cursor-pointer">
+                <a className={`${navbar? "hover:bg-qatarRed hover:text-white" : "hover:bg-qatarSilver hover:text-qatarRed"} w-1/3 px-2 h-full py-8 text-xl ${router.pathname === '/reglas'? "font-bold underline" : ""}`}>Reglas</a>
               </Link>
             </div>
           </div>
@@ -68,6 +71,10 @@ export default function Layout({ children }) {
                 <hr></hr>
                 <Link href="/resultados" className="cursor-pointer">
                   <div onClick={handleCloseMenuClick} className=" h-14 w-full flex items-center justify-center text-2xl hover:bg-qatarRed hover:text-white">Resultados</div>
+                </Link>
+                <hr></hr>
+                <Link href="/reglas" className="cursor-pointer">
+                  <div onClick={handleCloseMenuClick} className=" h-14 w-full flex items-center justify-center text-2xl hover:bg-qatarRed hover:text-white">Reglas</div>
                 </Link>
                 <hr></hr>
             </div>

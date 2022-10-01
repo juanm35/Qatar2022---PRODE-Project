@@ -6,7 +6,7 @@ function MatchCard(props) {
     return (
         <div className="">
             <hr className="border-gray-300 my-2"></hr>
-            <div align="center"> {`${days[matchDate.getDay()]} ${matchDate.getDate()}/${matchDate.getMonth()+1}, ${matchDate.getHours()}:00`}</div>
+            <div align="center" className="text-lg"> {`${days[matchDate.getDay()]} ${matchDate.getDate()}/${matchDate.getMonth()+1}, ${matchDate.getHours()}:00`}</div>
             <div align="center"><em>{props.match.Location}</em></div>
             <div className="flex my-2 mx-8">
                 <div align="center" className="flex w-2/5">
