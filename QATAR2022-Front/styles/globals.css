@@ -8,4 +8,27 @@
       -webkit-appearance: none;
       margin: 0;
     }
+    @font-face {
+      font-family: 'qatar';
+      font-weight: 'heavy';
+      src: url('/fonts/qatar-2022-font/Qatar2022Arabic-Heavy.otf') format("opentype");
+    }
+    @font-face {
+      font-family: 'qatar';
+      font-weight: 'bold';
+      src: url('/fonts/qatar-2022-font/Qatar2022Arabic-Bold.otf') format("opentype");
+    }
+    @font-face {
+      font-family: 'qatar';
+      font-weight: 'medium';
+      src: url('/fonts/qatar-2022-font/Qatar2022Arabic-Medium.otf') format("opentype");
+    }
+    @font-face {
+      font-family: 'qatar';
+      font-weight: 'normal';
+      src: url('/fonts/qatar-2022-font/Qatar2022.ttf') format("truetype");
+    }
+    html {
+      font-family: qatar, sans-serif, Proxima Nova, system-ui;
+    }
   }
