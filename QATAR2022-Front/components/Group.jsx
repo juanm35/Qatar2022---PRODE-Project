@@ -39,7 +39,7 @@ export default function Group(props) {
   })
   
   return (
-        <div>
+        <div className=''>
           <GroupTable title={props.group} countriesData={CountriesFullData}/>
           <GroupFixture fixtureData={matchResults} countriesData={props.countriesData}/>
         </div>

@@ -13,22 +13,22 @@ function Group(props) {
     }
     const orderedCountriesData = props.countriesData.sort(comparePositiveScore).sort(compareScoreDiff).sort(comparePoints)
     return (
-            <div className="m-4 sm:m-8 bg-transparent/[0.6] rounded-xl pt-0 pr-2.5 pb-5 pl-6" >
+            <div className="mx-0 my-4 sm:mx-4 md:mx-1 lg:mx-2 lg:my-8 xl:mx-6 bg-transparent/[0.6] sm:rounded-xl pt-0 pr-2.5 pb-5 pl-2 md:pr-2 lg:pl-6 lg:pr-2.5" >
                 <br/>
-                <div className="text-white"> {props.title} </div>
-                <table id="" className="text-white">
+                <div className="text-white text-xl mb-5 flex justify-center"> <strong>{props.title}</strong> </div>
+                <table id="" className="text-white mx-auto w-full">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th align="left">#</th>
                             <th className="w-2/5">Equipo</th>
-                            <th align="left" className="">Pts</th>
-                            <th align="left" className="">PJ</th>
-                            <th align="left" className="">PG</th>
-                            <th align="left" className="">PE</th>
-                            <th align="left" className="">PP</th>
-                            <th align="left" className="">GF</th>
-                            <th align="left" className="">GC</th>
-                            <th align="left" className="">DIF</th>
+                            <th align="center" className="">Pts</th>
+                            <th align="center" className="">PJ</th>
+                            <th align="center" className="">PG</th>
+                            <th align="center" className="">PE</th>
+                            <th align="center" className="">PP</th>
+                            <th align="center" className="">GF</th>
+                            <th align="center" className="">GC</th>
+                            <th align="center" className="">DIF</th>
                         </tr>
                     </thead>
                     <tbody>
