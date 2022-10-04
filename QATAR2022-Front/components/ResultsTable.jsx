@@ -2,7 +2,7 @@ import ResultsTableRow from './ResultsTableRow'
 
 function Group(props) {   
     return (
-            <div className="m-auto bg-transparent/[0.6] rounded-xl pt-8 pb-5 w-4/5" >
+            <div className="m-auto bg-transparent/[0.6] rounded-xl py-12 w-4/5" >
                 <br/>
                 <div className="text-white"> {props.title} </div>
                 <table id="" className="text-white w-full m-auto">

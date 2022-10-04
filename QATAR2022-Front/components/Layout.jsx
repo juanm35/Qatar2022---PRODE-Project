@@ -32,7 +32,7 @@ export default function Layout({ children }) {
 
   return (
       <>
-        <div className={`${navbar? "bg-qatarSilver/[0.95] text-qatarRed shadow-2xl" : "bg-transparent text-white"} flex justify-end items-center text-lg h-24 w-full border-b-green border-qatarRed text-center -mb-20 fixed z-10`}>
+        <div className={`${navbar? "bg-qatarSilver text-qatarRed shadow-2xl" : "bg-transparent text-white"} flex justify-end items-center text-lg h-24 w-full border-b-green border-qatarRed text-center -mb-20 fixed z-10`}>
           <div className="hidden md:flex md:w-full md:h-full md:justify-between md:pl-16 md:pr-6 lg:pr-12 xl:pr-32 md:items-center">
             <Link href="/" className="cursor-pointer">
               <a><img src={navbar? "/logoQatarRed.svg" : "/logoQatarWhite.svg"}/></a>
@@ -59,7 +59,7 @@ export default function Layout({ children }) {
             }
           </div>
           <div className={`${menuOpen? "w-full sm:w-1/2 opacity-100" : "w-0 overflow-hidden opacity-0"} h-screen bg-qatarSilver text-qatarRed fixed top-0 md:hidden transition-all delay-150`}>
-              <div className="flex flex-col mt-24 ">
+              <div className="flex flex-col mt-36 ">
                 <hr></hr>
                 <Link href="/" className="cursor-pointer">
                   <span onClick={handleCloseMenuClick} className="h-14 w-full flex items-center justify-center text-2xl hover:bg-qatarRed hover:text-white">Home</span>

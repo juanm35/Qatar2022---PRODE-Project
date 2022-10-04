@@ -27,7 +27,7 @@ export default function Home() {
           <Group group="Grupo G" countriesData={Countries.groupG} fixtureData={fixtureGroupG}/>
           <Group group="Grupo H" countriesData={Countries.groupH} fixtureData={fixtureGroupH}/>
         </div>
-        </div>
+      </div>
     </div>
   )
 }
