@@ -1,10 +1,8 @@
 import ProdeMatchRow from './ProdeMatchRow'
 
-import React, { useState } from 'react';
-
 function ProdeRoundCard(props) {
     const groupPhaseMatches = props.matches.filter((match) => match.Group)
-    // function compareMatchNumber(a, b) {
+    //  function compareMatchNumber(a, b) {
     //     return a.MatchNumber - b.MatchNumber;
     // }
     function compareMatchDate(a, b) {
@@ -22,6 +20,7 @@ function ProdeRoundCard(props) {
     // }
     let sortedGroupPhaseMatches = groupPhaseMatches.sort(compareMatchDate)
     //let sortedGroupPhaseMatches = defaultOrder? groupPhaseMatches.sort(compareMatchDate) : groupPhaseMatches.sort(compareMatchNumber); 
+
     
     return (
             <div className="text-black px-0 py-4 w-11/12 sm:w-4/5 md:w-11/12 lg:w-4/5 mx-auto md:px-8 bg-qatarSilver border rounded-lg hover:shadow-3xl my-8">
@@ -37,7 +36,7 @@ function ProdeRoundCard(props) {
                 <div className='grid grid-cols-1 md:grid-cols-2'>
                     {sortedGroupPhaseMatches.map((match,index) => 
                         <div key={`Match${index}`} className="py-2">
-                            <ProdeMatchRow match={match} homeFlag={props.countriesData[`${match.Group}`].filter((country) => country.name === match.HomeTeam)[0].flag} awayFlag={props.countriesData[match.Group].filter((country) => country.name === match.AwayTeam)[0].flag} topBar={index === 0? true : false}/>
+                            <ProdeMatchRow match={match} homeFlag={props.countriesData[`${match.Group}`].filter((country) => country.name === match.HomeTeam)[0].flag} awayFlag={props.countriesData[match.Group].filter((country) => country.name === match.AwayTeam)[0].flag} topBar={index === 0? true : false} updateGuess={props.updateGuess}/>
                         </div>
                         )}
                 </div>

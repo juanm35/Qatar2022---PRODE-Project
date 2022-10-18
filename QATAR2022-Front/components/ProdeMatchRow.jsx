@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 function ProdeMatchRow(props) {
     const matchDate = new Date(props.match.DateUtc)
     const days = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
@@ -11,6 +13,10 @@ function ProdeMatchRow(props) {
         groupG: "Grupo G",
         groupH: "Grupo H",
     }
+    const [input, setInput] = useState({"matchID": props.match.MatchNumber, "homeScoreGuess": props?.homeScoreGuess ?? '', "awayScoreGuess": props?.homeScoreGuess ?? ''});
+    useEffect(() => {
+        props.updateGuess(input), [input]
+      });
     return (
         <div className="hover:shadow-xl border-2 border-gray-200 rounded-xl border-solid py-2 md:py-8 mx-2 sm:mx-4">
             {/* <div align="center" className="text-lg"> <strong>{`Partido N° ${props.match.MatchNumber}`}</strong></div> */}
@@ -23,9 +29,19 @@ function ProdeMatchRow(props) {
                     <div className="ml-0 mr-auto">{props.match.HomeTeam.toUpperCase().slice(0,3)}</div>
                 </div>
                 <div align="center" className="w-1/5 bg-white flex justify-center sm:gap-2 md:gap-1 ">
-                    <input type="number" min="0" className="w-12 text-center"/>
+                    <input type="number" value={input.homeScoreGuess} min="0" className="w-12 text-center" onInput={e => setInput(
+                        prevState => ({
+                            ...prevState,
+                            ["homeScoreGuess"]: e.target.value
+                        })
+                    )}/>
                     <span className="border-solid border-2 px-2">-</span>
-                    <input type="number" min="0" className="w-12 text-center"/>
+                    <input type="number" value={input.awayScoreGuess} min="0" className="w-12 text-center" onInput={e => setInput(
+                        prevState => ({
+                            ...prevState,
+                            ["awayScoreGuess"]: e.target.value
+                        })
+                    )}/>
                 </div>
                 <div align="center" className="flex w-2/5">
                     <div className="mr-0 ml-auto">{props.match.AwayTeam.toUpperCase().slice(0,3)}</div>

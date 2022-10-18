@@ -3,6 +3,7 @@ import Fixture from '../../data/fixtureData.json'
 import ProdeRoundCard from '../../components/ProdeRoundCard'
 import { ConnectButton } from '@rainbow-me/rainbowkit'; 
 import { useAccount } from 'wagmi';
+import React, { useState } from 'react';
 
 export default function MiProde() { 
 
@@ -11,6 +12,26 @@ export default function MiProde() {
   const fixtureDataFecha1 = Fixture.data.filter((match) => match.RoundNumber === 1);
   const fixtureDataFecha2 = Fixture.data.filter((match) => match.RoundNumber === 2);
   const fixtureDataFecha3 = Fixture.data.filter((match) => match.RoundNumber === 3);
+
+
+  function compareGuessMatchNumber(a, b) {
+    return a.matchID - b.matchID;
+  }
+
+  let participantGuess = []
+
+  function updateGuess(guess) {
+      const newGuess = participantGuess.filter((element) => element.matchID !== guess.matchID);
+      newGuess.push(guess);
+      const sortedNewGuess = newGuess.sort(compareGuessMatchNumber);
+      participantGuess = sortedNewGuess;
+  }
+
+  const [error, setError] = useState('');
+
+  function sendProde() {
+    console.log("Boleta:", participantGuess);
+  }
 
   return (
     <div className=" bg-qatar bg-complete">
@@ -23,11 +44,14 @@ export default function MiProde() {
         </div> 
         
         {account.isConnected?
-        <div>       
-          <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1"/>
-          <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2"/> 
-          <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3"/> 
-        </div> : <div></div>
+        <div>
+          <div>       
+            <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess}/>
+            <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess}/> 
+            <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess}/> 
+          </div> 
+          <div onClick={sendProde} className='text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  hover:bg-qatarRed hover:text-white hover:border-solid-white hover:border-2'><strong>¡Enviar Pronóstico!</strong></div>
+        </div>: <div></div>
         }
       </div>
     </div>
