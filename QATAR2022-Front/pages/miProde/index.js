@@ -38,7 +38,7 @@ export default function MiProde() {
       <div className="py-20 bg-transparent/[0.3] min-h-screen">
         <h1 className='text-white text-6xl md:text-8xl w-full text-center pt-12 pb-10 lg:pb-12'><em>Mi Prode</em></h1>          
         {account.isConnected? <div></div> :
-        <div className='text-white text-lg md:text-2xl w-full text-center py-4 lg:py-10'>Conectá to Wallet para participar Da Prode...</div>  }
+        <div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>Conectá tu Wallet para participar Da Prode...</div>  }
         <div className="mx-auto mt-2 lg:mt-8 flex justify-center">
           <ConnectButton label="Conectar Wallet"/>
         </div> 
