@@ -17,9 +17,9 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum, chain.localhost],
   [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    alchemyProvider({ apiKey: "ct7vGKXhQSkQFsEcUxCa4Xc1m-y66mnz" }),
     publicProvider()
   ]
 );
@@ -35,22 +35,24 @@ const wagmiClient = createClient({
   provider
 })
 
+
 export default function MyApp({ Component, pageProps }) {
+
   return (
     <>
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
-        <Head>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <title key="title">Prode Qatar 2022</title>
-          <link rel="icon" href="/faviconCopa.png" />
-          <meta key="description" name="description" content="Contactame!" />
-        </Head>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </RainbowKitProvider>
-    </WagmiConfig>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title key="title">Prode Qatar 2022</title>
+        <link rel="icon" href="/faviconCopa.png" />
+        <meta key="description" name="description" content="Contactame!" />
+      </Head>
+      <WagmiConfig client={wagmiClient}>
+        <RainbowKitProvider chains={chains}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </RainbowKitProvider>
+      </WagmiConfig>
     </>
   );
 }
