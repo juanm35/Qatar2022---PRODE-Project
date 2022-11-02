@@ -1,6 +1,7 @@
 import Countries from '../data/countriesData.json'
 import Fixture from '../data/fixtureData.json'
 import Group from '../components/Group'
+// import EliminationPhase from '../components/EliminationPhase'
 
 export default function Home() {
 
@@ -17,6 +18,11 @@ export default function Home() {
     <div className="bg-qatar bg-complete">
      <div className="pt-20 bg-transparent/[0.3]">
         <h1 className='text-white text-6xl md:text-8xl w-full text-center pt-12 pb-12'><em>Da Prode</em></h1>
+
+      {/* <div>Elimination phases</div>
+      <div>
+        <EliminationPhase/>
+      </div> */}
         <div className='grid grid-cols-1 md:grid-cols-2 md:px-4'>
           <Group group="Grupo A" countriesData={Countries.groupA} fixtureData={fixtureGroupA}/>
           <Group group="Grupo B" countriesData={Countries.groupB} fixtureData={fixtureGroupB}/>
