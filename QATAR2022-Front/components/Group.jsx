@@ -40,7 +40,7 @@ export default function Group(props) {
   
   return (
         <div className=''>
-          <GroupTable title={props.group} countriesData={CountriesFullData}/>
+          <GroupTable title={props.group} countriesData={CountriesFullData} set8vosFinals={props.set8vosFinals}/>
           <GroupFixture fixtureData={matchResults} countriesData={props.countriesData}/>
         </div>
   )

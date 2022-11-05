@@ -1,7 +1,9 @@
 
+import { useEffect } from 'react';
 import GroupTableRow from './GroupTableRow'
 
 function Group(props) {
+
     function comparePoints(a, b) {
         return (b.wins*3+b.ties) - (a.wins*3+a.ties);
     }
@@ -12,6 +14,20 @@ function Group(props) {
         return b.positiveScore - a.positiveScore;
     }
     const orderedCountriesData = props.countriesData.sort(comparePositiveScore).sort(compareScoreDiff).sort(comparePoints)
+
+    useEffect(() => {
+        props.set8vosFinals(
+            {
+            name: orderedCountriesData[0].name,
+            flag: orderedCountriesData[0].flag,
+            },
+            {
+            name: orderedCountriesData[1].name,
+            flag: orderedCountriesData[1].flag,
+            })
+        }, [props.countriesData]
+      );
+
     return (
             <div className="mx-0 my-4 sm:mx-4 md:mx-1 lg:mx-2 lg:my-8 xl:mx-6 bg-transparent/[0.6] sm:rounded-xl pt-0 pr-2.5 pb-5 pl-2 md:pr-2 lg:pl-6 lg:pr-2.5" >
                 <div className="text-white text-xl flex justify-center"> <strong className='my-3 sm:my-5 md:my-3 lg:my-5'>{props.title}</strong> </div>
