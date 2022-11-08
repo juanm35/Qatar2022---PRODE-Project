@@ -9,8 +9,8 @@
         "HomeTeam": "Qatar",
         "AwayTeam": "Ecuador",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 3,
@@ -20,8 +20,8 @@
         "HomeTeam": "Inglaterra",
         "AwayTeam": "Iran",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 2,
@@ -31,8 +31,8 @@
         "HomeTeam": "Senegal",
         "AwayTeam": "Holanda",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 4,
@@ -42,8 +42,8 @@
         "HomeTeam": "USA",
         "AwayTeam": "Gales",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 8,
@@ -53,8 +53,8 @@
         "HomeTeam": "Argentina",
         "AwayTeam": "Arabia Saudita",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 4,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 6,
@@ -64,8 +64,8 @@
         "HomeTeam": "Dinamarca",
         "AwayTeam": "Tunez",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 3,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 7,
@@ -75,8 +75,8 @@
         "HomeTeam": "Mexico",
         "AwayTeam": "Polonia",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 5,
@@ -86,8 +86,8 @@
         "HomeTeam": "Francia",
         "AwayTeam": "Australia",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 12,
@@ -97,8 +97,8 @@
         "HomeTeam": "Marruecos",
         "AwayTeam": "Croacia",
         "Group": "groupF",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 11,
@@ -108,8 +108,8 @@
         "HomeTeam": "Alemania",
         "AwayTeam": "Japon",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 3,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 10,
@@ -119,8 +119,8 @@
         "HomeTeam": "España",
         "AwayTeam": "Costa Rica",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 9,
@@ -130,8 +130,8 @@
         "HomeTeam": "Belgica",
         "AwayTeam": "Canada",
         "Group": "groupF",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 3,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 13,
@@ -141,8 +141,8 @@
         "HomeTeam": "Suiza",
         "AwayTeam": "Camerun",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 14,
@@ -152,8 +152,8 @@
         "HomeTeam": "Uruguay",
         "AwayTeam": "Corea del sur",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 15,
@@ -163,8 +163,8 @@
         "HomeTeam": "Portugal",
         "AwayTeam": "Ghana",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 16,
@@ -174,8 +174,8 @@
         "HomeTeam": "Brasil",
         "AwayTeam": "Serbia",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 4,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 17,
@@ -185,8 +185,8 @@
         "HomeTeam": "Gales",
         "AwayTeam": "Iran",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 18,
@@ -196,8 +196,8 @@
         "HomeTeam": "Qatar",
         "AwayTeam": "Senegal",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 19,
@@ -207,8 +207,8 @@
         "HomeTeam": "Holanda",
         "AwayTeam": "Ecuador",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 3,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 20,
@@ -218,8 +218,8 @@
         "HomeTeam": "Inglaterra",
         "AwayTeam": "USA",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 21,
@@ -229,8 +229,8 @@
         "HomeTeam": "Tunez",
         "AwayTeam": "Australia",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 22,
@@ -240,8 +240,8 @@
         "HomeTeam": "Polonia",
         "AwayTeam": "Arabia Saudita",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 23,
@@ -251,8 +251,8 @@
         "HomeTeam": "Francia",
         "AwayTeam": "Dinamarca",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 24,
@@ -262,8 +262,8 @@
         "HomeTeam": "Argentina",
         "AwayTeam": "Mexico",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 25,
@@ -273,8 +273,8 @@
         "HomeTeam": "Japon",
         "AwayTeam": "Costa Rica",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 26,
@@ -284,8 +284,8 @@
         "HomeTeam": "Belgica",
         "AwayTeam": "Marruecos",
         "Group": "groupF",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 27,
@@ -295,8 +295,8 @@
         "HomeTeam": "Croacia",
         "AwayTeam": "Canada",
         "Group": "groupF",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 28,
@@ -306,8 +306,8 @@
         "HomeTeam": "España",
         "AwayTeam": "Alemania",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 29,
@@ -317,8 +317,8 @@
         "HomeTeam": "Camerun",
         "AwayTeam": "Serbia",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 30,
@@ -328,8 +328,8 @@
         "HomeTeam": "Corea del sur",
         "AwayTeam": "Ghana",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 31,
@@ -339,8 +339,8 @@
         "HomeTeam": "Brasil",
         "AwayTeam": "Suiza",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 32,
@@ -350,8 +350,8 @@
         "HomeTeam": "Portugal",
         "AwayTeam": "Uruguay",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 3,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 35,
@@ -361,8 +361,8 @@
         "HomeTeam": "Ecuador",
         "AwayTeam": "Senegal",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 36,
@@ -372,8 +372,8 @@
         "HomeTeam": "Holanda",
         "AwayTeam": "Qatar",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 3,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 33,
@@ -383,8 +383,8 @@
         "HomeTeam": "Gales",
         "AwayTeam": "Inglaterra",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 34,
@@ -394,8 +394,8 @@
         "HomeTeam": "Iran",
         "AwayTeam": "USA",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 37,
@@ -405,8 +405,8 @@
         "HomeTeam": "Australia",
         "AwayTeam": "Dinamarca",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 38,
@@ -416,8 +416,8 @@
         "HomeTeam": "Tunez",
         "AwayTeam": "Francia",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 4
     },
     {
         "MatchNumber": 39,
@@ -427,8 +427,8 @@
         "HomeTeam": "Polonia",
         "AwayTeam": "Argentina",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 40,
@@ -438,8 +438,8 @@
         "HomeTeam": "Arabia Saudita",
         "AwayTeam": "Mexico",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 41,
@@ -449,8 +449,8 @@
         "HomeTeam": "Croacia",
         "AwayTeam": "Belgica",
         "Group": "groupF",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 42,
@@ -460,8 +460,8 @@
         "HomeTeam": "Canada",
         "AwayTeam": "Marruecos",
         "Group": "groupF",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 4,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 43,
@@ -471,8 +471,8 @@
         "HomeTeam": "Japon",
         "AwayTeam": "España",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 44,
@@ -482,8 +482,8 @@
         "HomeTeam": "Costa Rica",
         "AwayTeam": "Alemania",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 45,
@@ -493,8 +493,8 @@
         "HomeTeam": "Ghana",
         "AwayTeam": "Uruguay",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 46,
@@ -504,8 +504,8 @@
         "HomeTeam": "Corea del sur",
         "AwayTeam": "Portugal",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 47,
@@ -515,8 +515,8 @@
         "HomeTeam": "Serbia",
         "AwayTeam": "Suiza",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 48,
@@ -526,8 +526,8 @@
         "HomeTeam": "Camerun",
         "AwayTeam": "Brasil",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 49,
