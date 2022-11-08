@@ -25,8 +25,10 @@ function ProdeMatchRow(props) {
             <div align="center"> {`${days[matchDate.getDay()]} ${matchDate.getDate()}/${matchDate.getMonth()+1}, ${matchDate.getHours()}:00`}</div>
             <div className="flex my-2 mx-2 lg:mx-8">
                 <div align="center" className="flex w-2/5">
-                    <img src={props.homeFlag} className="w-6 lg:w-8 h-6 mr-2 sm:mr-4 md:mr-1 lg:mr-4"/>
-                    <div className="ml-0 mr-auto">{props.match.HomeTeam.toUpperCase().slice(0,3) === "TO "? "A definir": props.match.HomeTeam.toUpperCase().slice(0,3)}</div>
+                    {props.homeFlag?
+                    <img src={props.homeFlag} className="w-6 lg:w-8 h-6 mr-2 sm:mr-4 md:mr-1 lg:mr-4"/> :
+                    <div className="w-6 lg:w-8 h-6 mr-2 sm:mr-4 md:mr-1 lg:mr-4 bg-gray-600 text-white">?</div> }
+                    <div className="ml-0 mr-auto">{props.match.HomeTeam.toUpperCase().slice(0,3)}</div>
                 </div>
                 <div align="center" className="w-1/5 bg-white flex justify-center sm:gap-2 md:gap-1 ">
                     <input type="number" value={input.homeScoreGuess} min="0" className="w-12 text-center" onInput={e => setInput(
@@ -44,8 +46,10 @@ function ProdeMatchRow(props) {
                     )}/>
                 </div>
                 <div align="center" className="flex w-2/5">
-                    <div className="mr-0 ml-auto">{props.match.AwayTeam.toUpperCase().slice(0,3) === "TO "? "A definir": props.match.AwayTeam.toUpperCase().slice(0,3)}</div>
-                    <img src={props.awayFlag} className="w-6 lg:w-8 h-6 ml-2 sm:ml-4 md:ml-1 lg:ml-4"/>
+                    <div className="mr-0 ml-auto">{props.match.AwayTeam.toUpperCase().slice(0,3)}</div>
+                    {props.awayFlag?
+                    <img src={props.awayFlag} className="w-6 lg:w-8 h-6 ml-2 sm:ml-4 md:ml-1 lg:ml-4"/>:
+                    <div className="w-6 lg:w-8 h-6 ml-2 sm:ml-4 md:ml-1 lg:ml-4 bg-gray-600 text-white">?</div> }
                 </div>
             </div>
         </div>

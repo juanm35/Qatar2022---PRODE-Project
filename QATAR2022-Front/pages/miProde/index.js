@@ -157,7 +157,7 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess}/> 
               <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess}/> 
             </div> 
-            <div onClick={sendProde} className='text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  hover:bg-qatarRed hover:text-white hover:border-solid-white hover:border-2'><strong>¡Enviar Pronóstico!</strong></div>
+            <div onClick={sendProde} className='text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  hover:bg-qatarRed hover:text-white hover:border-solid-white hover:border-2'><div><strong>¡Enviar Pronóstico!</strong><div className="text-sm underline">Fase de Grupos</div></div></div>
           </div> :
           <div> 
             <div>       
@@ -167,7 +167,7 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true}/> 
               <ProdeRoundCard matches={fixtureDataFinal} countriesData={Countries} title="FINAL" updateGuess={updateGuessEliminationPhase} center={true}/> 
             </div> 
-            <div onClick={sendProdeEliminationPhase} className='text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  hover:bg-qatarRed hover:text-white hover:border-solid-white hover:border-2'><strong>¡Enviar Pronóstico!</strong></div>
+            <div onClick={sendProdeEliminationPhase} className='text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  hover:bg-qatarRed hover:text-white hover:border-solid-white hover:border-2'><div><strong>¡Enviar Pronóstico!</strong><div className="text-sm underline">Fase de Eliminatorias</div></div></div>
           </div>
           }
         </div> :
