@@ -2,7 +2,7 @@ import Countries from '../../data/countriesData.json'
 import Fixture from '../../data/fixtureData.json'
 import ProdeRoundCard from '../../components/ProdeRoundCard'
 import { ConnectButton } from '@rainbow-me/rainbowkit'; 
-import { useAccount, useContractRead, } from 'wagmi';
+import { useAccount, useContractRead, useNetwork } from 'wagmi';
 import React, { useState, useEffect } from 'react';
 import contractAbi from "../../contractAbi.json";
 import { localhost } from 'wagmi/chains'
@@ -10,10 +10,14 @@ import { useContractWrite, usePrepareContractWrite } from 'wagmi'
 import { packResults, unpackResult } from "../../helpers";
 import {eliminationPhaseRounds} from  '../../data/seedsEliminationBracket'
 import {eliminationPhaseMatchFixture} from '../../data/fixtureData.js'
+import { WhitelistUser } from '../../components/WhitelistUser.tsx'
+import { SetResult } from '../../components/SetResult.tsx'
+import { ApproveERC20 } from '../../components/ApproveERC20.tsx'
+import { Deposit } from '../../components/Deposit.tsx'
 
 export default function MiProde() { 
 
-const [secondPhase, setSecondPhase] = useState(false); 
+const [secondPhase, setSecondPhase] = useState(false);
 
 function handleGroupPhaseClick() {
   setSecondPhase(false)
@@ -158,6 +162,14 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess}/> 
             </div> 
             <div onClick={sendProde} className='text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  hover:bg-qatarRed hover:text-white hover:border-solid-white hover:border-2'><div><strong>¡Enviar Pronóstico!</strong><div className="text-sm underline">Fase de Grupos</div></div></div>
+            <div className='flex flex-col items-center sm:flex-row justify-center gap-8 my-8'>
+              <WhitelistUser />
+              <SetResult />
+            </div>
+            <div className='flex flex-col items-center sm:flex-row justify-center gap-8 my-8'>
+              <ApproveERC20 />
+              <Deposit />
+            </div>
           </div> :
           <div> 
             <div>       
