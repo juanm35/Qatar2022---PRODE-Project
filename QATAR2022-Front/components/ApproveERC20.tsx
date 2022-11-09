@@ -16,6 +16,7 @@ export function ApproveERC20() {
   } = usePrepareContractWrite({
     // MockToken address
     addressOrName: '0xF5aA8e3C6BA1EdF766E197a0bCD5844Fd1ed8A27',
+    // ERC20 token interface for approving a token
     contractInterface: [
       {
         name: 'approve',
@@ -35,6 +36,7 @@ export function ApproveERC20() {
       },
     ],
     functionName: "approve",
+    // Hardcoded prode contract address and 50 tokens (when deposit amount is defined we change it)
     args: ["0xee85d401835561De62b874147Eca8A4Fe1D5cBFf", utils.parseEther("50")],
     enabled: true,
   })

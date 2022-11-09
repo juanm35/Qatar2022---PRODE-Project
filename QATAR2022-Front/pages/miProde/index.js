@@ -10,10 +10,14 @@ import { useContractWrite, usePrepareContractWrite } from 'wagmi'
 import { packResults, unpackResult } from "../../helpers";
 import {eliminationPhaseRounds} from  '../../data/seedsEliminationBracket'
 import {eliminationPhaseMatchFixture} from '../../data/fixtureData.js'
+
+// writing contract
 import { WhitelistUser } from '../../components/WhitelistUser.tsx'
 import { SetResult } from '../../components/SetResult.tsx'
 import { ApproveERC20 } from '../../components/ApproveERC20.tsx'
 import { Deposit } from '../../components/Deposit.tsx'
+import { ClaimReward } from '../../components/ClaimReward.tsx'
+import { StoreScores } from '../../components/StoreScores.tsx'
 
 export default function MiProde() { 
 
@@ -30,21 +34,35 @@ function handleEliminationPhaseClick() {
 // --- Set variable for checking if user is connected
 const [connected, setConnected] = useState(false);
 const account = useAccount()
+console.log("account:", account.address);
 useEffect( () => setConnected(account.isConnected), [account.isConnected]);
 // --------------------------------------------------
 
 // // --- 1. READ CONTRACT: Is user whitelisted?
-// const whiteL = useContractRead({
-//   addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
-//   contractInterface: contractAbi,
-//   functionName: 'whitelist',
-//   args: ['0x0EDd8AF763D0a7999f15623859dA9a0A786D1A9B'], // for sample user
-//   chainId: localhost.id,
-// })
-// useEffect( () => {
-//   console.log("1. whiteListed: ", whiteL.data)
-// }, []);
+const whiteL = useContractRead({
+  addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+  contractInterface: contractAbi,
+  functionName: 'whitelist',
+  args: [account.address], // for sample user
+  chainId: localhost.id,
+})
+useEffect( () => {
+  console.log("1. whiteListed: ", whiteL.data)
+}, []);
 // // --------------------------------------------------
+
+// Using this to check if account has messi role (is admin) or not.
+const messi_role = useContractRead({
+  addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+  contractInterface: contractAbi,
+  functionName: 'hasRole',
+  // MESSI_ROLE = 0x6c517e5383e587fe2f529c2d8a0cde0b7f7a101600f2b798a0bd2cd9190ef44f
+  args: ['0x6c517e5383e587fe2f529c2d8a0cde0b7f7a101600f2b798a0bd2cd9190ef44f', account.address], // for sample user
+  chainId: localhost.id,
+})
+useEffect( () => {
+  console.log("messi_role: ", messi_role.data)
+}, []);
 
 // // --- 2. READ CONTRACT: users total deposits?
 // const alreadyDeposited = useContractRead({
@@ -162,14 +180,29 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess}/> 
             </div> 
             <div onClick={sendProde} className='text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  hover:bg-qatarRed hover:text-white hover:border-solid-white hover:border-2'><div><strong>¡Enviar Pronóstico!</strong><div className="text-sm underline">Fase de Grupos</div></div></div>
-            <div className='flex flex-col items-center sm:flex-row justify-center gap-8 my-8'>
-              <WhitelistUser />
-              <SetResult />
-            </div>
-            <div className='flex flex-col items-center sm:flex-row justify-center gap-8 my-8'>
-              <ApproveERC20 />
-              <Deposit />
-            </div>
+
+            {/*Esto podes borrarlo, solo estoy testeando, la idea igual esta buena de tener ya armado para nosotros que vamos a ser admin, al menos para whitelistear rapido*/}
+            {/*Playing arround with whitelisted accounts, messi role accounts and non whitelisted accounts*/}
+            {whiteL.data?
+              <div className='flex flex-col items-center sm:flex-row justify-center gap-8 my-8'>
+                <ApproveERC20 />
+                <Deposit />
+                <ClaimReward />
+              </div>
+            : 
+            <>
+              {messi_role.data?
+                <div className='flex flex-col items-center sm:flex-row justify-center gap-8 my-8'>
+                  <WhitelistUser />
+                  <SetResult />
+                  <StoreScores />
+                </div>
+                :
+                <></>
+              }
+            </>
+            }
+
           </div> :
           <div> 
             <div>       

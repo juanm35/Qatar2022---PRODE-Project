@@ -6,7 +6,7 @@ import {
 } from 'wagmi'
 import contractAbi from "../contractAbi.json";
 
-export function Deposit() {
+export function ClaimReward() {
 
   const {
     config,
@@ -15,7 +15,7 @@ export function Deposit() {
   } = usePrepareContractWrite({
     addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
     contractInterface: contractAbi,
-    functionName: "deposit",
+    functionName: "claimReward",
     args: [],
     enabled: true,
   })
@@ -29,13 +29,10 @@ export function Deposit() {
   return (
     <div onClick={write} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'>
       <strong>
-        {isLoading ? 'Depositing...' : 'Deposit token'}
+        {isLoading ? 'Claiming...' : 'Claim reward'}
         {isSuccess && (
         <div>
-          Successfully deposit!
-          <div>
-            50 Tokens
-          </div>
+          Successfully claimed!
         </div>
       )}
       </strong>

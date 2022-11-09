@@ -4,23 +4,13 @@ import {
   useContractWrite,
   useWaitForTransaction,
 } from 'wagmi'
+import contractAbi from "../contractAbi.json";
 
 export function SetResult() {
 
   const { config } = usePrepareContractWrite({
     addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
-    contractInterface: [
-      {
-        name: 'setResults',
-        type: 'function',
-        stateMutability: 'nonpayable',
-        inputs: [
-          { internalType: "uint8[]", name: "_results", type: "uint8[]"},
-          { internalType: "uint8[]", name: "_matchId", type: "uint8[]"}
-        ],
-        outputs: [],
-      },
-    ],
+    contractInterface: contractAbi,
     functionName: "setResults",
     args: [[10, 20, 30], [0, 1, 2]],
     enabled: true,

@@ -4,6 +4,7 @@ import {
   useContractWrite,
   useWaitForTransaction,
 } from 'wagmi'
+import contractAbi from "../contractAbi.json";
 
 export function WhitelistUser() {
  
@@ -13,15 +14,7 @@ export function WhitelistUser() {
     isError: isPrepareError,
   } = usePrepareContractWrite({
     addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
-    contractInterface: [
-      {
-        name: 'whitelistUser',
-        type: 'function',
-        stateMutability: 'nonpayable',
-        inputs: [{ internalType: "address", name: "_user", type: "address" }],
-        outputs: [],
-      },
-    ],
+    contractInterface: contractAbi,
     functionName: "whitelistUser",
     args: ["0x0EDd8AF763D0a7999f15623859dA9a0A786D1A9B"],
     enabled: true,
