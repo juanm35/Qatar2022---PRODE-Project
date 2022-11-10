@@ -34,14 +34,14 @@ function ProdeMatchRow(props) {
                     <input type="number" value={input.homeScoreGuess} min="0" className="w-12 text-center" onInput={e => setInput(
                         prevState => ({
                             ...prevState,
-                            ["homeScoreGuess"]: e.target.value
+                            ["homeScoreGuess"]: e.target.value*1
                         })
                     )}/>
                     <span className="border-solid border-2 px-2">-</span>
                     <input type="number" value={input.awayScoreGuess} min="0" className="w-12 text-center" onInput={e => setInput(
                         prevState => ({
                             ...prevState,
-                            ["awayScoreGuess"]: e.target.value
+                            ["awayScoreGuess"]: e.target.value*1
                         })
                     )}/>
                 </div>

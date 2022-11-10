@@ -22,7 +22,7 @@ function ProdeRoundCard(props) {
     return (
             <div className="text-black px-0 py-4 w-11/12 sm:w-4/5 md:w-11/12 lg:w-4/5 mx-auto md:px-8 bg-qatarSilver border rounded-lg hover:shadow-3xl my-8">
                 <div onClick={handleCardClick} align="center" className="flex px-2 cursor-pointer">
-                    <div align="center" className="m-auto mt-4 text-3xl md:text-4xl text-black font-bold">{props.title}</div>
+                    <div align="center" className="m-auto my-4 text-3xl md:text-4xl text-black font-bold">{props.title}</div>
                 </div>
                 {showCard?
                 <div className={`grid grid-cols-1 ${!props.center?"md:grid-cols-2":'md:px-20'}`}>

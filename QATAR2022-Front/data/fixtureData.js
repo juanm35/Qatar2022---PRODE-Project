@@ -88,7 +88,6 @@ export const countriesStats = {
 
 //// **************************************************ELIMINATION PHASE *****************************************************************
 let eliminationPhaseFixture = matchResultsEliminationPhase
-console.log("elimination", eliminationPhaseFixture)
 
 // Setting 8vos finals
   // GRUPO A

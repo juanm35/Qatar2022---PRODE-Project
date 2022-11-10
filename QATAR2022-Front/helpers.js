@@ -20,8 +20,8 @@ function packResult(home, away) {
     const ids = [];
     const results = [];
     for (let i = 0; i < games.length; i++) {
-      ids.push(games[i].id);
-      results.push(packResult(games[i].home, games[i].away));
+      ids.push(games[i].matchID);
+      results.push(packResult(games[i].homeScoreGuess, games[i].awayScoreGuess));
     }
     return {
       ids: ids,

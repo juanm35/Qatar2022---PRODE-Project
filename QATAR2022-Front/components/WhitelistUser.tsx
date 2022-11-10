@@ -27,6 +27,7 @@ export function WhitelistUser() {
   })
  
   return (
+    // @ts-ignore
     <div onClick={write} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'>
       <strong>
         {isLoading ? 'Whitelisting...' : 'Whitelist'}

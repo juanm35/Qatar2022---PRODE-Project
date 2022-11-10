@@ -1,4 +1,9 @@
+import {useEffect} from 'react'
+
 function GroupRow(props) {
+
+    useEffect (() =>
+    {console.log("esaga2", props.currentPlayer)}, [])
     // Captures 0x + 4 characters, then the last 4 characters.
     const truncateRegex = /^(0x[a-zA-Z0-9]{4})[a-zA-Z0-9]+([a-zA-Z0-9]{4})$/;
     /**
@@ -13,14 +18,14 @@ function GroupRow(props) {
     };
 
     return (
-        <tr className="h-10 w-full">
-            <td align="center" className="w-1/5">0</td>
+        <tr className={`${props.currentPlayer? 'bg-qatarSilver text-qatarRed' :''} h-10 w-full`}>
+            <td align="center" className="w-1/5">{props.index+1}</td>
             <td align="center" className="w-3/5 truncate">
                 <div className="w-full truncate">
-                    {truncateEthAddress("0xdAC17F958D2ee523a2206206994597C13D831ec7")}
+                    {truncateEthAddress(props.address)}
                 </div>
             </td>
-            <td align="center" className="w-1/5">0</td>
+            <td align="center" className="w-1/5">{props.score}</td>
         </tr>
     );
   }
