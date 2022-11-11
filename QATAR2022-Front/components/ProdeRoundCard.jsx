@@ -28,7 +28,7 @@ function ProdeRoundCard(props) {
                 <div className={`grid grid-cols-1 ${!props.center?"md:grid-cols-2":'md:px-20'}`}>
                     {sortedMatches.map((match,index) => 
                         <div key={`Match${index}-${props.title}-${match.MatchNumber}`} className="py-2">
-                            <ProdeMatchRow match={match} homeFlag={props.countriesData[`${match.Group}`].filter((country) => country.name === match.HomeTeam)[0]?.flag} awayFlag={props.countriesData[match.Group].filter((country) => country.name === match.AwayTeam)[0]?.flag} topBar={index === 0? true : false} updateGuess={props.updateGuess}/>
+                            <ProdeMatchRow match={match} homeFlag={props.countriesData[`${match.Group}`].filter((country) => country.name === match.HomeTeam)[0]?.flag} awayFlag={props.countriesData[match.Group].filter((country) => country.name === match.AwayTeam)[0]?.flag} topBar={index === 0? true : false} updateGuess={props.updateGuess} userCurrentMatchGuess={props.userCurrentGuess[match.MatchNumber-1]}/>
                         </div>
                         )}
                 </div>:

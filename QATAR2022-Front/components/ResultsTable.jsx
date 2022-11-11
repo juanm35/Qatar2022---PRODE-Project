@@ -1,11 +1,8 @@
 import ResultsTableRow from './ResultsTableRow'
-import {useEffect} from 'react'
-import { useAccount, useContractRead, useNetwork } from 'wagmi';
+import { useAccount} from 'wagmi';
 
 function Group(props) {   
     const account = useAccount()
-    useEffect (() =>
-    {console.log("esaga", account.address)}, [])
 
     return (
             <div className="m-auto bg-transparent/[0.6] rounded-xl py-12 w-11/12 md:w-4/5 lg:w-3/5" >
@@ -19,7 +16,7 @@ function Group(props) {
                         </tr>
                     </thead>
                     <tbody className='w-full'>
-                    { props.scores.map((score,index) => <ResultsTableRow address={score.address} score={score.score} index={index} currentPlayer={account.address === score.address}/>)}
+                    { props.scores.map((score,index) => <ResultsTableRow key={`index${index}-${score.address}`} address={score.address} score={score.score} index={index} currentPlayer={account.address === score.address}/>)}
                     </tbody>
                 </table>
             </div>

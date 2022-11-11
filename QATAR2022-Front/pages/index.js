@@ -6,9 +6,7 @@ import { useAccount, useContractRead, useNetwork } from 'wagmi';
 import React, { useState, useEffect } from 'react';
 import contractAbi from "../contractAbi.json";
 import { localhost } from 'wagmi/chains'
-import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi'
 import { packResults, unpackResult } from "../helpers";
-import {eliminationPhaseRounds} from  '../data/seedsEliminationBracket'
 import {eliminationPhaseMatchFixture} from '../data/fixtureData.js'
 
 // writing contract
@@ -34,7 +32,6 @@ function handleEliminationPhaseClick() {
 // --- Set variable for checking if user is connected
 const [connected, setConnected] = useState(false);
 const account = useAccount()
-console.log("account:", account.address);
 useEffect( () => setConnected(account.isConnected), [account.isConnected]);
 // --------------------------------------------------
 
@@ -75,32 +72,20 @@ useEffect( () => {
  useEffect( () => {
    console.log("2. deposited: ", alreadyDeposited.data?.toString())
  }, []);
- // --------------------------------------------------
 
- // --- 3. READ CONTRACT: users score?
-  const userScore = useContractRead({
+  // --- 4. READ CONTRACT: users results?
+  const userGuessResult = useContractRead({
     addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
     contractInterface: contractAbi,
-    functionName: 'getScores',
-    args: [],
+    functionName: 'getUserResults',
+    args: [account.address],
     chainId: localhost.id,
   })
+  const userCurrentGuess = userGuessResult.data?.map((result) => result === 255? {"home": '-', "away": '-'} : unpackResult(result));
   useEffect( () => {
-    console.log("3. userScore: ", userScore.data?.toString()) }, []);
+    console.log("4. userGuessResult: ", userGuessResult.data?.map((result) => result === 255? {"home": '-', "away": '-'} : unpackResult(result)))
+  }, []);
   // --------------------------------------------------
-
- // --- 4. READ CONTRACT: users results?
- const userGuessResult = useContractRead({
-   addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
-   contractInterface: contractAbi,
-   functionName: 'getResults',
-   args: [account.address],
-   chainId: localhost.id,
- })
- useEffect( () => {
-   console.log("4. userGuessResult: ", userGuessResult.data, unpackResult([]))
- }, []);
- // --------------------------------------------------
 
 
 
@@ -116,28 +101,28 @@ const fixtureDataSemi = eliminationPhaseMatchFixture.filter((match) => match.Rou
 const fixtureData3rdAnd4th = eliminationPhaseMatchFixture.filter((match) => match.RoundNumber === 7);
 const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.RoundNumber === 8);
 
-
+// compare function
   function compareGuessMatchNumber(a, b) {
     return a.matchID - b.matchID;
-  }
+  } 
 
+  // participant guess for group phase
   let participantGuess = []
-  
-  const [pack, setPack] = useState({results: [], ids: []});
 
   function updateGuess(guess) {
       const newGuess = participantGuess.filter((element) => element.matchID !== guess.matchID);
       newGuess.push(guess);
       const sortedNewGuess = newGuess.sort(compareGuessMatchNumber);
-      participantGuess = sortedNewGuess;
+      participantGuess = sortedNewGuess;      
   }
   
-  function sendProde() {
-    const pGuessOnlyFiltered = participantGuess.filter((match) => typeof(match.homeScoreGuess) === "number" && typeof(match.awayScoreGuess) === "number" )
-    setPack(packResults(pGuessOnlyFiltered))
-    console.log("Boleta:", pack)
-    write
+  function packProde() {
+    const pGuessFiltered = participantGuess.filter((match) => typeof(match.homeScoreGuess) === "number" && typeof(match.awayScoreGuess) === "number" )
+    console.log("UNPACKED RESULTS - 1st PHASE: ", pGuessFiltered)
+    return packResults(pGuessFiltered)
   }
+
+  // participant guess for elimination phase
 
   let participantGuess2ndPhase = []
 
@@ -148,28 +133,11 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
     participantGuess2ndPhase = sortedNewGuess;
 }
 
-  function sendProdeEliminationPhase() {
+  function packProdeEliminationPhase() {
     const pGuess2ndPhaseFiltered = participantGuess2ndPhase.filter((match) => typeof(match.homeScoreGuess) === "number" && typeof(match.awayScoreGuess) === "number" )
-    setPack(packResults(pGuess2ndPhaseFiltered))
-    console.log("Boleta:", pack)
-    write
-  }
-
-  // --- 5. WRITE CONTRACT: set user results guess
-const { config } = usePrepareContractWrite({
-  addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
-  contractInterface: contractAbi,
-  functionName: "setResults",
-  args: [pack.results, pack.ids],
-  enabled: true,
-})
-
-const { data, write } = useContractWrite(config)
-
-const { isLoading, isSuccess, isError } = useWaitForTransaction({
-  hash: data?.hash,
-})
-  
+    console.log("UNPACKED RESULTS - 2nd PHASE: ", pGuess2ndPhaseFiltered)
+    return packResults(pGuess2ndPhaseFiltered)
+  } 
 
   return (
     <div className=" bg-qatar bg-complete">
@@ -181,8 +149,7 @@ const { isLoading, isSuccess, isError } = useWaitForTransaction({
         {
         connected? 
         <div>
-          {/* {whiteL.data && alreadyDeposited.data.toString() != '0' || messiRole.data? */}
-          {whiteL.data || messiRole.data?
+          {whiteL.data && alreadyDeposited.data.toString() != '0' || messiRole.data?
           <div>
           {messiRole.data? <div className='text-white text-6xl bg-qatarGold md:text-6xl w-full text-center pt-12 mt-4 pb-10 lg:pb-12'>¡¡¡MESSI USER!!!</div>:<></>}
             <div className='flex gap-1 pb-4 items-center sm:flex-row justify-center md:gap-8 md:my-8'>
@@ -192,55 +159,21 @@ const { isLoading, isSuccess, isError } = useWaitForTransaction({
               {!secondPhase?
               <div>
                 <div>       
-                  <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess}/>
-                  <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess}/> 
-                  <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess}/> 
+                  <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess} userCurrentGuess={userCurrentGuess}/>
+                  <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess} userCurrentGuess={userCurrentGuess}/> 
+                  <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess} userCurrentGuess={userCurrentGuess}/> 
                 </div> 
-                <div onClick={sendProde} className={`text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  ${messiRole.data?"hover:bg-qatarGold":"hover:bg-qatarRed"} hover:text-white hover:border-solid-white hover:border-2`}>
-                  <div>
-                    <strong>{isLoading ? "Enviando..." : (messiRole.data?"Setear Resultados":"¡Enviar Pronóstico!")}</strong>
-                    <div className="text-sm underline">Fase de Grupos</div>
-                  </div>
-                </div>
-                <strong>
-                    {isSuccess && (
-                    <div className='text-qatarRed bg-qatarSilver w-fit text-lg md:text-2xl text-center px-6 py-4 lg:py-4 rounded-full mx-auto mt-2'>
-                      Resultados enviados exitosamente!!! &#9989;
-                    </div>
-                  )}
-                  {isError && (
-                    <div className='text-qatarRed bg-qatarSilver w-fit text-lg md:text-2xl text-center px-6 py-4 lg:py-4 rounded-full mx-auto mt-2'>
-                      La transacción no se completo correctamente. &#10060;
-                    </div>
-                  )}
-                </strong>
+                  <SetResult guess={participantGuess} messiRole={messiRole.data} packProde={packProde}/>
               </div> :
               <div> 
                 <div>       
-                  <ProdeRoundCard matches={fixtureDataOctavos} countriesData={Countries} title="OCTAVOS DE FINAL" updateGuess={updateGuessEliminationPhase}/>
-                  <ProdeRoundCard matches={fixtureDataQarters} countriesData={Countries} title="CUARTOS DE FINAL" updateGuess={updateGuessEliminationPhase}/> 
-                  <ProdeRoundCard matches={fixtureDataSemi} countriesData={Countries} title="SEMI FINAL" updateGuess={updateGuessEliminationPhase}/> 
-                  <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true}/> 
-                  <ProdeRoundCard matches={fixtureDataFinal} countriesData={Countries} title="FINAL" updateGuess={updateGuessEliminationPhase} center={true}/> 
+                  <ProdeRoundCard matches={fixtureDataOctavos} countriesData={Countries} title="OCTAVOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={userCurrentGuess}/>
+                  <ProdeRoundCard matches={fixtureDataQarters} countriesData={Countries} title="CUARTOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={userCurrentGuess}/> 
+                  <ProdeRoundCard matches={fixtureDataSemi} countriesData={Countries} title="SEMI FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={userCurrentGuess}/> 
+                  <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={userCurrentGuess}/> 
+                  <ProdeRoundCard matches={fixtureDataFinal} countriesData={Countries} title="FINAL" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={userCurrentGuess}/> 
                 </div> 
-                <div onClick={sendProdeEliminationPhase} className='text-qatarRed bg-qatarSilver mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center  hover:bg-qatarRed hover:text-white hover:border-solid-white hover:border-2'>
-                  <div>
-                    <strong>{isLoading ? "Enviando..." : (messiRole.data?"Setear Resultados":"¡Enviar Pronóstico!")}</strong>
-                    <div className="text-sm underline">Fase de Eliminatorias</div>
-                  </div>
-                </div>
-                <strong>
-                    {isSuccess && (
-                    <div className='text-qatarRed bg-qatarSilver w-fit text-lg md:text-2xl text-center px-6 py-4 lg:py-4 rounded-full mx-auto mt-2'>
-                      Resultados enviados exitosamente!!! &#9989;
-                    </div>
-                  )}
-                  {isError && (
-                    <div className='text-qatarRed bg-qatarSilver w-fit text-lg md:text-2xl text-center px-6 py-4 lg:py-4 rounded-full mx-auto mt-2'>
-                      La transacción no se completo correctamente. &#10060;
-                    </div>
-                  )}
-                </strong>
+                <SetResult guess={participantGuess2ndPhase} messiRole={messiRole.data} packProde={packProdeEliminationPhase}/>
               </div> }
             </div>:
             whiteL.data && alreadyDeposited.data.toString() === '0'?
@@ -255,11 +188,11 @@ const { isLoading, isSuccess, isError } = useWaitForTransaction({
         </div> :
         <div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>Conectá tu Wallet para participar...</div>  
         }
-        {messiRole.data?
+        {connected && messiRole.data?
           <div className='flex flex-col items-center sm:flex-row justify-center gap-8 my-8'>
-            <WhitelistUser />
+            {/* <WhitelistUser />
             <SetResult />
-            <StoreScores />
+            <StoreScores /> */}
           </div>
           :
           <></>

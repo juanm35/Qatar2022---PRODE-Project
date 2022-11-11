@@ -1,7 +1,20 @@
 import ResultsTable from '../../components/ResultsTable'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {useContractRead} from 'wagmi';
+import { localhost } from 'wagmi/chains'
+import contractAbi from "../../contractAbi.json";
 
 export default function Resultados() {  
+  
+  // --- 3. READ CONTRACT: users score?
+  const userScores = useContractRead({
+    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    contractInterface: contractAbi,
+    functionName: 'getScores',
+    args: [[]],
+    chainId: localhost.id,
+  })
+
   const secondPhaseScoresInitial = [
     {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 90},
     {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 10},
@@ -14,21 +27,10 @@ export default function Resultados() {
     {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 90},
     {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 90},
   ]
-  const firstPhaseScoresInitial = [
-    {address: '0x0797B98884dE920620DCD9d84C4F106374c6121C', score: 60},
-    {address: '0x7B239486bB165D44825eA1dB7f05871C34dd7ae6', score: 40},
-    {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 40},
-    {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 40},
-    {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 40},
-    {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 40},
-    {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 30},
-    {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 40},
-    {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 90},
-    {address: '0xdAC17F958D2ee523a2206206994597C13D831ec7', score: 40},
-  ]
 const [secondPhase, setSecondPhase] = useState(false);
 const [secondPhaseScores, setSecondPhaseScores] = useState(secondPhaseScoresInitial);
-const [firstPhaseScores, setirstPhaseScores] = useState(firstPhaseScoresInitial);
+const [firstPhaseScores, setFirstPhaseScores] = useState([{address: '', score: 0}]);
+useEffect(() => setFirstPhaseScores(userScores.data[0].map((address,index) => { return {"address": address, "score": userScores.data[1][index].toNumber()} })),[])
 
 function handleGroupPhaseClick() {
   setSecondPhase(false)
