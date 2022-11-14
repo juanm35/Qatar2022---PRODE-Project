@@ -4,10 +4,12 @@ import ProdeRoundCard from '../components/ProdeRoundCard'
 import { ConnectButton } from '@rainbow-me/rainbowkit'; 
 import { useAccount, useContractRead, useNetwork } from 'wagmi';
 import React, { useState, useEffect } from 'react';
-import contractAbi from "../contractAbi.json";
 import { localhost } from 'wagmi/chains'
 import { packResults, unpackResult } from "../helpers";
 import {eliminationPhaseMatchFixture} from '../data/fixtureData.js'
+import contractAbi from "../contractAbi.json";
+import erc20Abi from "../erc20Abi.json";
+import { utils } from "ethers";
 
 // writing contract
 import { WhitelistUser } from '../components/WhitelistUser.tsx'
@@ -87,6 +89,21 @@ useEffect( () => {
   }, []);
   // --------------------------------------------------
 
+  const approved = useContractRead({
+    addressOrName: '0xF5aA8e3C6BA1EdF766E197a0bCD5844Fd1ed8A27',
+    contractInterface: erc20Abi,
+    functionName: 'allowance',
+    args: [account.address, "0xee85d401835561De62b874147Eca8A4Fe1D5cBFf"], 
+    chainId: localhost.id,
+  })
+  useEffect( () => {
+    if(approved.data) {
+      console.log("allowance: ", utils.formatEther(approved.data))
+      console.log(approved)
+    } else {
+      console.log("allowance: ", "no data yet")
+    }
+  }, []);
 
 
 // FIXTURES GROUP PHASES
