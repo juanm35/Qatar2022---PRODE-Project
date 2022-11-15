@@ -1,10 +1,10 @@
 
 
-//import Fixture from './fixtureData.json' assert { type: "json" }
+import Fixture from './fixtureData.json' assert { type: "json" }
 import Countries from './countriesData.json' assert { type: "json" }
-//import {eliminationPhaseRounds} from  './seedsEliminationBracket'
-import Fixture from './testData/fixtureDataTest.json' assert { type: "json" }
-import {eliminationPhaseRounds} from  './testData/seedsEliminationBracketTest'
+import {eliminationPhaseRounds} from  './seedsEliminationBracket'
+//import Fixture from './testData/fixtureDataTest.json' assert { type: "json" }
+//import {eliminationPhaseRounds} from  './testData/seedsEliminationBracketTest'
 
 
 // Constant containing the fixture plus the winner - tie - looser properties
