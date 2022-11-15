@@ -6,13 +6,14 @@ import {
 } from 'wagmi'
 import contractAbi from "../contractAbi.json";
 import {useState, useEffect} from 'react'
+import addressesData from '../addresses.json'
 
 export function SetResult(props: any) {
 
   useEffect(() => console.log("PACKED RESULT: ", props.guess),[])
 
   const { config } = usePrepareContractWrite({
-    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    addressOrName: addressesData.contractAddress,
     contractInterface: contractAbi,
     functionName: "setResults",
     args: [props.guess.results, props.guess.ids],

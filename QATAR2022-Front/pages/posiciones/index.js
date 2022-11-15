@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import {useContractRead} from 'wagmi';
 import { localhost } from 'wagmi/chains'
 import contractAbi from "../../contractAbi.json";
+import addressesData from '../../addresses.json'
 
 export default function Resultados() {  
   
   // --- 3. READ CONTRACT: users score?
   const userScores = useContractRead({
-    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    addressOrName: addressesData.contractAddress,
     contractInterface: contractAbi,
     functionName: 'getScores',
     args: [[]],

@@ -5,6 +5,7 @@ import {
   useWaitForTransaction,
 } from 'wagmi'
 import contractAbi from "../contractAbi.json";
+import addressesData from "../addresses.json";
 
 export function Deposit(props) {
 
@@ -13,7 +14,7 @@ export function Deposit(props) {
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    addressOrName: addressesData.contractAddress,
     contractInterface: contractAbi,
     functionName: "deposit",
     args: [],
@@ -34,11 +35,11 @@ export function Deposit(props) {
       <div onClick={write} className={`${props.tokenApproved? '' : "hidden"} text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer`}>
         <strong>
           {isLoading ? 'Enviando...' : 'Inscribirse'}
-          <div>15.00 DAI</div>
+          <div>15.00 USDC</div>
         </strong>
       </div>
       <div className={`${props.tokenApproved? 'hidden' : ''} text-gray-400 bg-gray-200 rounded-lg p-3 w-60 text-center text-lg cursor-pointer`}>
-        <div>Inscribirse</div><div>15.00 DAI</div>
+        <div>Inscribirse</div><div>15.00 USDC</div>
       </div>
       <div>
           {isSuccess && (

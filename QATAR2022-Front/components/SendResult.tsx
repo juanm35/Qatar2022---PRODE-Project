@@ -4,10 +4,11 @@ import {
   useContractWrite,
   useWaitForTransaction,
 } from 'wagmi'
+import addressesData from '../addresses.json'
  
 export function MintNFT() {
   const { config } = usePrepareContractWrite({
-    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    addressOrName: addressesData.contractAddress,
     contractInterface: [
       {
         name: 'whitelistUser',

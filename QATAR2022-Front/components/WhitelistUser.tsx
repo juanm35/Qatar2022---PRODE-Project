@@ -6,6 +6,7 @@ import {
 } from 'wagmi'
 import contractAbi from "../contractAbi.json";
 import {useState} from 'react'
+import addressesData from "../addresses.json";
 
 export function WhitelistUser() {
 
@@ -16,7 +17,7 @@ export function WhitelistUser() {
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    addressOrName: addressesData.contractAddress,
     contractInterface: contractAbi,
     functionName: "whitelistUser",
     args: [input],

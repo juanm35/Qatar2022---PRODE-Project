@@ -10,6 +10,7 @@ import {eliminationPhaseMatchFixture} from '../data/fixtureData.js'
 import contractAbi from "../contractAbi.json";
 import erc20Abi from "../erc20Abi.json";
 import { utils } from "ethers";
+import addressesData from "../addresses.json"
 
 // writing contract
 import { WhitelistUser } from '../components/WhitelistUser.tsx'
@@ -39,7 +40,7 @@ useEffect( () => setConnected(account.isConnected), [account.isConnected]);
 
 // // --- 1. READ CONTRACT: Is user whitelisted?
 const whiteL = useContractRead({
-  addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+  addressOrName: addressesData.contractAddress,
   contractInterface: contractAbi,
   functionName: 'whitelist',
   args: [account.address], // for sample user
@@ -52,7 +53,7 @@ useEffect( () => {
 
 // Using this to check if account has messi role (is admin) or not.
 const messiRole = useContractRead({
-  addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+  addressOrName: addressesData.contractAddress,
   contractInterface: contractAbi,
   functionName: 'hasRole',
   // MESSIROLE = 0x6c517e5383e587fe2f529c2d8a0cde0b7f7a101600f2b798a0bd2cd9190ef44f
@@ -65,7 +66,7 @@ useEffect( () => {
 
  // --- 2. READ CONTRACT: users total deposits?
  const alreadyDeposited = useContractRead({
-   addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+   addressOrName: addressesData.contractAddress,
    contractInterface: contractAbi,
    functionName: 'deposits',
    args: [account.address], 
@@ -77,7 +78,7 @@ useEffect( () => {
 
   // --- 4. READ CONTRACT: users results?
   const userGuessResult = useContractRead({
-    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    addressOrName: addressesData.contractAddress,
     contractInterface: contractAbi,
     functionName: 'getUserResults',
     args: [account.address],
@@ -89,7 +90,7 @@ useEffect( () => {
   }, []);
 
   const realResults = useContractRead({
-    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    addressOrName: addressesData.contractAddress,
     contractInterface: contractAbi,
     functionName: 'getResults',
     args: [],
@@ -104,10 +105,10 @@ useEffect( () => {
   // --------------------------------------------------
 
   const approved = useContractRead({
-    addressOrName: '0xF5aA8e3C6BA1EdF766E197a0bCD5844Fd1ed8A27',
+    addressOrName: addressesData.tokenAddress,
     contractInterface: erc20Abi,
     functionName: 'allowance',
-    args: [account.address, "0xee85d401835561De62b874147Eca8A4Fe1D5cBFf"], 
+    args: [account.address, addressesData.contractAddress], 
     chainId: localhost.id,
   })
   useEffect( () => {
@@ -256,7 +257,7 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               </div> }
             </div>:
             whiteL.data && alreadyDeposited.data.toString() === '0'?
-            <div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>A ponerlaaa &#128184;... deposita 15 DAI para participar!!!
+            <div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>A ponerlaaa &#128184;... deposita 15 USDC para participar!!!
               <div className='flex flex-col items-center gap-2 mt-4'>
                 {approved.data > 0 || approvedSuccess? <></> : <ApproveERC20 approveSuccessFunction={approveSuccessEvent}/>}
                 <Deposit tokenApproved={approved.data > 0 || approvedSuccess} depositSuccessFunction={depositSuccessEvent}/>

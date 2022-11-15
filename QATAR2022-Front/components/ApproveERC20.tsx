@@ -6,6 +6,7 @@ import {
 } from 'wagmi'
 
 import { utils } from 'ethers'
+import addressesData from'../addresses.json'
 
 export function ApproveERC20(props) {
 
@@ -37,7 +38,7 @@ export function ApproveERC20(props) {
     ],
     functionName: "approve",
     // Hardcoded prode contract address and 50 tokens (when deposit amount is defined we change it)
-    args: ["0xee85d401835561De62b874147Eca8A4Fe1D5cBFf", utils.parseEther("50")],
+    args: [addressesData.contractAddress, utils.parseEther("50")],
     enabled: true,
   })
 
@@ -54,7 +55,7 @@ export function ApproveERC20(props) {
     <div className="flex flex-col items-center">
       <div onClick={write} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'>
         <strong>
-          {isLoading ? 'Aprobando...' : 'Aprobar DAI'}
+          {isLoading ? 'Aprobando...' : 'Aprobar USDC'}
         </strong>
       </div>
       <strong>
