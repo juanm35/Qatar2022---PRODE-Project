@@ -24,8 +24,8 @@ function ReglasComponent(props) {
                 <li className="pt-2 pb-2 px-4 lg:px-12 text-black"> Al cargar resultados nuevos, los mismos los vas a poder distinguir en un color rojo oscuro. &#128308;</li>
                 <li className="pt-2 pb-2 px-4 lg:px-12 text-black"> Los pronósticos para primera y segunda fase se envía en boletas separadas como se ve en la página de <strong>Mi Prode</strong>. Aún así, los puntajes de ambas fases suman en una única tabla general para definir a los ganadores al finalizar el mundial completo. Se sugiere esperar a conocer a los equipos para enviar la boleta de la segunda fase.</li>
               </ul>
-              <div className="pt-2 px-8 text-black indent-6">Una vez finalizado el mundial, el smart contract se encargará de calular los premios a los ganadores y los pondrá a disposición de los mismos para ser reclamados.</div>
-              <div className="pt-2 px-8 text-black indent-6">En la paǵina <strong>Info</strong> se puede consultar fixture y resultados reales del Mundial!</div>
+              <div className="pt-2 px-8 text-black indent-6">7. Una vez finalizado el mundial, el smart contract se encargará de calular los premios a los ganadores y los pondrá a disposición de los mismos para ser reclamados.</div>
+              <div className="pt-2 px-8 text-black indent-6">8. En la paǵina <strong>Info</strong> se puede consultar fixture y resultados reales del Mundial!</div>
               <div className="pt-2 pb-2 px-8 text-qatarRed text-2xl"><strong>Puntajes</strong></div>
               <div className="pt-2 px-8 text-black indent-6">El puntaje máximo posible a sumar por cada partido es de <strong>30 Pts</strong>, desglosado de la siguiente forma:</div>
               <ul className="list-disc list-inside pl-4">
