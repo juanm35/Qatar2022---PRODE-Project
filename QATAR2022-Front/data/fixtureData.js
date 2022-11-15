@@ -1,10 +1,10 @@
 
 
-import Fixture from './fixtureData.json' assert { type: "json" }
+//import Fixture from './fixtureData.json' assert { type: "json" }
 import Countries from './countriesData.json' assert { type: "json" }
-import {eliminationPhaseRounds} from  './seedsEliminationBracket'
-//import Fixture from './testData/fixtureDataTest.json' assert { type: "json" }
-//import {eliminationPhaseRounds} from  './testData/seedsEliminationBracketTest'
+//import {eliminationPhaseRounds} from  './seedsEliminationBracket'
+import Fixture from './testData/fixtureDataTest.json' assert { type: "json" }
+import {eliminationPhaseRounds} from  './testData/seedsEliminationBracketTest'
 
 
 // Constant containing the fixture plus the winner - tie - looser properties
@@ -99,7 +99,7 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
 
     // Setting fixture for miProde cards
     eliminationPhaseFixture[0].HomeTeam = countriesStats.groupA[0].name
-    eliminationPhaseFixture[4].AwayTeam = countriesStats.groupA[1].name
+    eliminationPhaseFixture[3].AwayTeam = countriesStats.groupA[1].name
 
     
   
@@ -112,7 +112,7 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
     eliminationPhaseRounds[0].seeds[0].teams[1].flag = countriesStats.groupB[1].flag;
 
     // Setting fixture for miProde cards    
-    eliminationPhaseFixture[4].HomeTeam = countriesStats.groupB[0].name
+    eliminationPhaseFixture[3].HomeTeam = countriesStats.groupB[0].name
     eliminationPhaseFixture[0].AwayTeam = countriesStats.groupB[1].name
   
   // Grupo C
@@ -124,7 +124,7 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
 
     // Setting fixture for miProde cards
     eliminationPhaseFixture[1].HomeTeam = countriesStats.groupC[0].name
-    eliminationPhaseFixture[5].AwayTeam = countriesStats.groupC[1].name
+    eliminationPhaseFixture[2].AwayTeam = countriesStats.groupC[1].name
   
   // Grupo D
     // Setting seed for tournament brackets
@@ -134,7 +134,7 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
     eliminationPhaseRounds[0].seeds[5].teams[0].flag = countriesStats.groupD[0].flag;
 
     // Setting fixture for miProde cards
-    eliminationPhaseFixture[5].HomeTeam = countriesStats.groupD[0].name
+    eliminationPhaseFixture[2].HomeTeam = countriesStats.groupD[0].name
     eliminationPhaseFixture[1].AwayTeam = countriesStats.groupD[1].name
   
   // Grupo E
@@ -146,7 +146,7 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
 
     // Setting fixture for miProde cards  
 
-    eliminationPhaseFixture[2].HomeTeam = countriesStats.groupE[0].name;
+    eliminationPhaseFixture[4].HomeTeam = countriesStats.groupE[0].name;
     eliminationPhaseFixture[6].AwayTeam = countriesStats.groupE[1].name;
 
   // Grupo F
@@ -158,7 +158,7 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
 
     // Setting fixture for miProde cards  
     eliminationPhaseFixture[6].HomeTeam = countriesStats.groupF[0].name
-    eliminationPhaseFixture[2].AwayTeam = countriesStats.groupF[1].name
+    eliminationPhaseFixture[4].AwayTeam = countriesStats.groupF[1].name
 
 
   // Grupo G
@@ -169,7 +169,7 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
     eliminationPhaseRounds[0].seeds[7].teams[1].flag = countriesStats.groupG[1].flag;
 
     // Setting fixture for miProde cards
-    eliminationPhaseFixture[3].HomeTeam = countriesStats.groupG[0].name
+    eliminationPhaseFixture[5].HomeTeam = countriesStats.groupG[0].name
     eliminationPhaseFixture[7].AwayTeam = countriesStats.groupG[1].name
   
   // Grupo H
@@ -181,7 +181,7 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
 
     // Setting fixture for miProde cards  
     eliminationPhaseFixture[7].HomeTeam = countriesStats.groupH[0].name
-    eliminationPhaseFixture[3].AwayTeam = countriesStats.groupH[1].name
+    eliminationPhaseFixture[5].AwayTeam = countriesStats.groupH[1].name
   
   // Setting Qater finals
   const match8vos1 = eliminationPhaseRounds[0].seeds[0]
@@ -196,89 +196,89 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
     eliminationPhaseRounds[1].seeds[0].teams[0].name = match8vos1.teams[0].name
     eliminationPhaseRounds[1].seeds[0].teams[0].flag = match8vos1.teams[0].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[8].HomeTeam = match8vos1.teams[0].name
+    eliminationPhaseFixture[9].HomeTeam = match8vos1.teams[0].name
   } else if ((match8vos1.score.home < match8vos1.score.away || match8vos1.penalties.home < match8vos1.penalties.away) ?? false) {
     eliminationPhaseRounds[1].seeds[0].teams[0].name = match8vos1.teams[1].name
     eliminationPhaseRounds[1].seeds[0].teams[0].flag = match8vos1.teams[1].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[8].HomeTeam = match8vos1.teams[1].name
+    eliminationPhaseFixture[9].HomeTeam = match8vos1.teams[1].name
   }
   if((match8vos2.score.home > match8vos2.score.away || match8vos2.penalties.home > match8vos2.penalties.away) ?? false ) {
     eliminationPhaseRounds[1].seeds[0].teams[1].name = match8vos2.teams[0].name
     eliminationPhaseRounds[1].seeds[0].teams[1].flag = match8vos2.teams[0].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[8].AwayTeam = match8vos2.teams[0].name
+    eliminationPhaseFixture[9].AwayTeam = match8vos2.teams[0].name
   } else if ((match8vos2.score.home < match8vos2.score.away || match8vos2.penalties.home < match8vos2.penalties.away) ?? false) {
     eliminationPhaseRounds[1].seeds[0].teams[1].name = match8vos2.teams[1].name
     eliminationPhaseRounds[1].seeds[0].teams[1].flag = match8vos2.teams[1].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[8].AwayTeam = match8vos2.teams[1].name
+    eliminationPhaseFixture[9].AwayTeam = match8vos2.teams[1].name
   }
   if((match8vos3.score.home > match8vos3.score.away || match8vos3.penalties.home > match8vos3.penalties.away) ?? false ) {
     eliminationPhaseRounds[1].seeds[1].teams[0].name = match8vos3.teams[0].name
     eliminationPhaseRounds[1].seeds[1].teams[0].flag = match8vos3.teams[0].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[9].HomeTeam = match8vos3.teams[0].name
+    eliminationPhaseFixture[8].HomeTeam = match8vos3.teams[0].name
   } else if ((match8vos3.score.home < match8vos3.score.away || match8vos3.penalties.home < match8vos3.penalties.away) ?? false) {
     eliminationPhaseRounds[1].seeds[1].teams[0].name = match8vos3.teams[1].name
     eliminationPhaseRounds[1].seeds[1].teams[0].flag = match8vos3.teams[1].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[9].HomeTeam = match8vos3.teams[1].name
+    eliminationPhaseFixture[8].HomeTeam = match8vos3.teams[1].name
   }
   if((match8vos4.score.home > match8vos4.score.away || match8vos4.penalties.home > match8vos4.penalties.away) ?? false ) {
     eliminationPhaseRounds[1].seeds[1].teams[1].name = match8vos4.teams[0].name
     eliminationPhaseRounds[1].seeds[1].teams[1].flag = match8vos4.teams[0].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[9].AwayTeam = match8vos4.teams[0].name
+    eliminationPhaseFixture[8].AwayTeam = match8vos4.teams[0].name
   } else if ((match8vos4.score.home < match8vos4.score.away || match8vos4.penalties.home < match8vos4.penalties.away) ?? false) {
     eliminationPhaseRounds[1].seeds[1].teams[1].name = match8vos4.teams[1].name
     eliminationPhaseRounds[1].seeds[1].teams[1].flag = match8vos4.teams[1].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[9].AwayTeam = match8vos4.teams[1].name
+    eliminationPhaseFixture[8].AwayTeam = match8vos4.teams[1].name
   }
   if((match8vos5.score.home > match8vos5.score.away || match8vos5.penalties.home > match8vos5.penalties.away) ?? false ) {
     eliminationPhaseRounds[1].seeds[2].teams[0].name = match8vos5.teams[0].name
     eliminationPhaseRounds[1].seeds[2].teams[0].flag = match8vos5.teams[0].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[10].HomeTeam = match8vos5.teams[0].name
+    eliminationPhaseFixture[11].HomeTeam = match8vos5.teams[0].name
   } else if ((match8vos5.score.home < match8vos5.score.away || match8vos5.penalties.home < match8vos5.penalties.away) ?? false) {
     eliminationPhaseRounds[1].seeds[2].teams[0].name = match8vos5.teams[1].name
     eliminationPhaseRounds[1].seeds[2].teams[0].flag = match8vos5.teams[1].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[10].HomeTeam = match8vos5.teams[1].name
+    eliminationPhaseFixture[11].HomeTeam = match8vos5.teams[1].name
   }
   if((match8vos6.score.home > match8vos6.score.away || match8vos6.penalties.home > match8vos6.penalties.away) ?? false ) {
     eliminationPhaseRounds[1].seeds[2].teams[1].name = match8vos6.teams[0].name
     eliminationPhaseRounds[1].seeds[2].teams[1].flag = match8vos6.teams[0].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[10].AwayTeam = match8vos6.teams[0].name
+    eliminationPhaseFixture[11].AwayTeam = match8vos6.teams[0].name
   } else if ((match8vos6.score.home < match8vos6.score.away || match8vos6.penalties.home < match8vos6.penalties.away) ?? false) {
     eliminationPhaseRounds[1].seeds[2].teams[1].name = match8vos6.teams[1].name
     eliminationPhaseRounds[1].seeds[2].teams[1].flag = match8vos6.teams[1].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[10].AwayTeam = match8vos6.teams[1].name
+    eliminationPhaseFixture[11].AwayTeam = match8vos6.teams[1].name
   }
   if((match8vos7.score.home > match8vos7.score.away || match8vos7.penalties.home > match8vos7.penalties.away) ?? false ) {
     eliminationPhaseRounds[1].seeds[3].teams[0].name = match8vos7.teams[0].name
     eliminationPhaseRounds[1].seeds[3].teams[0].flag = match8vos7.teams[0].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[11].HomeTeam = match8vos7.teams[0].name
+    eliminationPhaseFixture[10].HomeTeam = match8vos7.teams[0].name
   } else if ((match8vos7.score.home < match8vos7.score.away || match8vos7.penalties.home < match8vos7.penalties.away) ?? false) {
     eliminationPhaseRounds[1].seeds[3].teams[0].name = match8vos7.teams[1].name
     eliminationPhaseRounds[1].seeds[3].teams[0].flag = match8vos7.teams[1].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[11].HomeTeam = match8vos7.teams[1].name
+    eliminationPhaseFixture[10].HomeTeam = match8vos7.teams[1].name
   }
   if((match8vos8.score.home > match8vos8.score.away || match8vos8.penalties.home > match8vos8.penalties.away) ?? false ) {
     eliminationPhaseRounds[1].seeds[3].teams[1].name = match8vos8.teams[0].name
     eliminationPhaseRounds[1].seeds[3].teams[1].flag = match8vos8.teams[0].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[11].AwayTeam = match8vos8.teams[0].name
+    eliminationPhaseFixture[10].AwayTeam = match8vos8.teams[0].name
   } else if ((match8vos8.score.home < match8vos8.score.away || match8vos8.penalties.home < match8vos8.penalties.away) ?? false) {
     eliminationPhaseRounds[1].seeds[3].teams[1].name = match8vos8.teams[1].name
     eliminationPhaseRounds[1].seeds[3].teams[1].flag = match8vos8.teams[1].flag
      // Setting fixture for miProde cards 
-    eliminationPhaseFixture[11].AwayTeam = match8vos8.teams[1].name
+    eliminationPhaseFixture[10].AwayTeam = match8vos8.teams[1].name
   }
   
   // Setting Semi Finals
