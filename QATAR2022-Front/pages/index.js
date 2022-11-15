@@ -44,7 +44,7 @@ const whiteL = useContractRead({
   contractInterface: contractAbi,
   functionName: 'whitelist',
   args: [account.address], // for sample user
-  chainId: localhost.id,
+  chainId: 137
 })
 useEffect( () => {
   console.log("1. whiteListed: ", whiteL.data)
@@ -58,7 +58,7 @@ const messiRole = useContractRead({
   functionName: 'hasRole',
   // MESSIROLE = 0x6c517e5383e587fe2f529c2d8a0cde0b7f7a101600f2b798a0bd2cd9190ef44f
   args: ['0x6c517e5383e587fe2f529c2d8a0cde0b7f7a101600f2b798a0bd2cd9190ef44f', account.address], 
-  chainId: localhost.id,
+  chainId: 137,
 })
 useEffect( () => {
   console.log("1.5 messiRole: ", messiRole.data)
@@ -70,7 +70,7 @@ useEffect( () => {
    contractInterface: contractAbi,
    functionName: 'deposits',
    args: [account.address], 
-   chainId: localhost.id,
+   chainId: 137,
  })
  useEffect( () => {
    console.log("2. deposited: ", alreadyDeposited.data?.toString())
@@ -82,7 +82,7 @@ useEffect( () => {
     contractInterface: contractAbi,
     functionName: 'getUserResults',
     args: [account.address],
-    chainId: localhost.id,
+    chainId: 137,
   })
   const userCurrentGuess = userGuessResult.data?.map((result) => result === 255? {"home": '-', "away": '-'} : unpackResult(result));
   useEffect( () => {
@@ -94,7 +94,7 @@ useEffect( () => {
     contractInterface: contractAbi,
     functionName: 'getResults',
     args: [],
-    chainId: localhost.id,
+    chainId: 137,
   })
   const realResultsProcessed = realResults.data?.map((result) => result === 255? {"home": '-', "away": '-'} : unpackResult(result));
   useEffect( () => {
@@ -109,7 +109,7 @@ useEffect( () => {
     contractInterface: erc20Abi,
     functionName: 'allowance',
     args: [account.address, addressesData.contractAddress], 
-    chainId: localhost.id,
+    chainId: 137,
   })
   useEffect( () => {
     if(approved.data) {

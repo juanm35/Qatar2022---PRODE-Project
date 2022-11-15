@@ -13,7 +13,7 @@ export default function Resultados() {
     contractInterface: contractAbi,
     functionName: 'getScores',
     args: [[]],
-    chainId: localhost.id,
+    chainId: 137,
   })
 
 
