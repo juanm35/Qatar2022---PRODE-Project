@@ -7,7 +7,7 @@ import {
 
 import { utils } from 'ethers'
 
-export function ApproveERC20() {
+export function ApproveERC20(props) {
 
   const {
     config,
@@ -45,28 +45,30 @@ export function ApproveERC20() {
  
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
+    onSuccess(data) {
+      props.approveSuccessFunction()
+    },
   })
  
   return (
-    <div onClick={write} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'>
+    <div className="flex flex-col items-center">
+      <div onClick={write} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'>
+        <strong>
+          {isLoading ? 'Aprobando...' : 'Aprobar DAI'}
+        </strong>
+      </div>
       <strong>
-        {isLoading ? 'Approving...' : 'Approve token'}
-        {isSuccess && (
-        <div>
-          Successfully approved!
-          <div>
-            50 Tokens
+          {isSuccess && (
+          <div className='text-qatarRed bg-qatarSilver w-fit text-lg md:text-lg text-center px-6 py-4 lg:py-4 rounded-full mx-auto mt-2'>
+            Token aprobado!!! &#9989;
           </div>
-        </div>
-      )}
+        )}
+        {isError && (
+          <div className='text-qatarRed bg-qatarSilver w-fit text-lg md:text-lg text-center px-6 py-4 lg:py-4 rounded-full mx-auto mt-2'>
+            Error al aprobar el token. &#10060;
+          </div>
+        )}
       </strong>
-      {/*
-      isPrepareError shows up when an error is found in the preparation of the transaction.
-      isError shows up when clicking
-        */}
-      {(isPrepareError || isError) && (
-        <div>Error: {(prepareError || error)?.message?.match(/reverted with custom error \'.*?\'/)}</div>
-      )}
-    </div>
+</div>
   )
 }

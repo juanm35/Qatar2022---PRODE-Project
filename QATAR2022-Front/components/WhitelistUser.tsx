@@ -5,8 +5,11 @@ import {
   useWaitForTransaction,
 } from 'wagmi'
 import contractAbi from "../contractAbi.json";
+import {useState} from 'react'
 
 export function WhitelistUser() {
+
+  const [input, setInput] = useState('')
  
   const {
     config,
@@ -16,7 +19,7 @@ export function WhitelistUser() {
     addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
     contractInterface: contractAbi,
     functionName: "whitelistUser",
-    args: ["0x0EDd8AF763D0a7999f15623859dA9a0A786D1A9B"],
+    args: [input],
     enabled: true,
   })
 
@@ -29,6 +32,7 @@ export function WhitelistUser() {
   return (
     // @ts-ignore
     <div onClick={write} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'>
+      <input type="text" onInput={e => setInput(e.target.value)}/>
       <strong>
         {isLoading ? 'Whitelisting...' : 'Whitelist'}
         {isSuccess && (
@@ -44,8 +48,8 @@ export function WhitelistUser() {
       isPrepareError shows up when an error is found in the preparation of the transaction.
       isError shows up when clicking
         */}
-      {(isPrepareError || isError) && (
-        <div>Error: {(prepareError || error)?.message?.match(/reverted with custom error \'.*?\'/)}</div>
+      {(isError) && (
+        <div>Error: {(error)?.message?.match(/reverted with custom error \'.*?\'/)}</div>
       )}
     </div>
   )

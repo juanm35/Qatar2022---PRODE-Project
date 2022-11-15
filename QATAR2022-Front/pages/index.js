@@ -87,6 +87,20 @@ useEffect( () => {
   useEffect( () => {
     console.log("4. userGuessResult: ", userGuessResult.data?.map((result) => result === 255? {"home": '-', "away": '-'} : unpackResult(result)))
   }, []);
+
+  const realResults = useContractRead({
+    addressOrName: '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+    contractInterface: contractAbi,
+    functionName: 'getResults',
+    args: [],
+    chainId: localhost.id,
+  })
+  const realResultsProcessed = realResults.data?.map((result) => result === 255? {"home": '-', "away": '-'} : unpackResult(result));
+  useEffect( () => {
+    console.log("5. Real Results: ", realResults, realResults.data?.map((result) => result === 255? {"home": '-', "away": '-'} : unpackResult(result)))
+  }, []);
+
+  
   // --------------------------------------------------
 
   const approved = useContractRead({
@@ -134,9 +148,10 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
   }
   
   function packProde() {
-    const pGuessFiltered = participantGuess.filter((match) => typeof(match.homeScoreGuess) === "number" && typeof(match.awayScoreGuess) === "number" )
-    console.log("UNPACKED RESULTS - 1st PHASE: ", pGuessFiltered)
-    return packResults(pGuessFiltered)
+    const pGuessFiltered = participantGuess.filter((match) => typeof(match.homeScoreGuess) === "number" && typeof(match.awayScoreGuess) === "number" && match.homeScoreGuess < 16 && match.awayScoreGuess < 16 && (match.awayScoreGuess != 15 || match.homeScoreGuess != 15))
+    const pGuessIndexCorrection = pGuessFiltered.map((match) => {return {"matchID": match.matchID-1, "homeScoreGuess": match.homeScoreGuess, "awayScoreGuess": match.awayScoreGuess}} )
+    console.log("UNPACKED RESULTS - 1st PHASE: ", pGuessIndexCorrection)
+    return packResults(pGuessIndexCorrection)
   }
 
   // participant guess for elimination phase
@@ -151,10 +166,37 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
 }
 
   function packProdeEliminationPhase() {
-    const pGuess2ndPhaseFiltered = participantGuess2ndPhase.filter((match) => typeof(match.homeScoreGuess) === "number" && typeof(match.awayScoreGuess) === "number" )
-    console.log("UNPACKED RESULTS - 2nd PHASE: ", pGuess2ndPhaseFiltered)
-    return packResults(pGuess2ndPhaseFiltered)
+    const pGuess2ndPhaseFiltered = participantGuess2ndPhase.filter((match) => typeof(match.homeScoreGuess) === "number" && typeof(match.awayScoreGuess) === "number" && match.homeScoreGuess < 16 && match.awayScoreGuess < 16 && (match.awayScoreGuess != 15 || match.homeScoreGuess != 15))
+    const pGuess2ndPhaseIndexCorrection = pGuess2ndPhaseFiltered.map((match) => {return {"matchID": match.matchID-1, "homeScoreGuess": match.homeScoreGuess, "awayScoreGuess": match.awayScoreGuess}} )
+    console.log("UNPACKED RESULTS - 2nd PHASE: ", pGuess2ndPhaseIndexCorrection)
+    return packResults(pGuess2ndPhaseIndexCorrection)
   } 
+
+  const [checked, setChecked] = useState(false)
+  const [checked2ndPhase, setChecked2ndPhase] = useState(false)
+  const [packGroupPhaseGuess, setPackGroupPhaseGuess] = useState({results: [], ids: []})
+  const [packEliminationPhaseGuess, setPackEliminationPhaseGuess] = useState({results: [], ids: []})
+  function handleCheckboxChange(e) {
+    setChecked(e.target.checked)
+    setPackGroupPhaseGuess(packProde(participantGuess))
+  }
+
+  function handleCheckboxChange2ndPh(e) {
+    setChecked2ndPhase(e.target.checked)
+    setPackEliminationPhaseGuess(packProdeEliminationPhase(participantGuess2ndPhase))
+  }
+
+  const [approvedSuccess, setApprovedSuccess] = useState(false)
+
+  function approveSuccessEvent(){
+    setApprovedSuccess(true)
+  }
+
+  const [depositSuccess, setDepositSuccess] = useState(false)
+
+  function depositSuccessEvent(){
+    setDepositSuccess(true)
+  }
 
   return (
     <div className=" bg-qatar bg-complete">
@@ -166,7 +208,7 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
         {
         connected? 
         <div>
-          {whiteL.data && alreadyDeposited.data.toString() != '0' || messiRole.data?
+          {whiteL.data && (alreadyDeposited?.data.toString() != '0' || depositSuccess) || messiRole.data?
           <div>
           {messiRole.data? <div className='text-white text-6xl bg-qatarGold md:text-6xl w-full text-center pt-12 mt-4 pb-10 lg:pb-12'>¡¡¡MESSI USER!!!</div>:<></>}
             <div className='flex gap-1 pb-4 items-center sm:flex-row justify-center md:gap-8 md:my-8'>
@@ -176,28 +218,48 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               {!secondPhase?
               <div>
                 <div>       
-                  <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess} userCurrentGuess={userCurrentGuess}/>
-                  <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess} userCurrentGuess={userCurrentGuess}/> 
-                  <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess} userCurrentGuess={userCurrentGuess}/> 
+                  <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked}/>
+                  <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked}/> 
+                  <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked}/> 
                 </div> 
-                  <SetResult guess={participantGuess} messiRole={messiRole.data} packProde={packProde}/>
+                <div onChange={handleCheckboxChange} className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
+                  <input type="checkbox" className="w-8"/>
+                  <div className="text-white text-lg md:text-4xl">Revisé mis resultados.</div>
+                </div>
+                {checked?
+                  <SetResult guess={packGroupPhaseGuess} messiRole={messiRole.data} secondPhase={secondPhase}/> :
+                  <div className={`text-gray-400 bg-gray-200 mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center`}>
+                    <strong>{messiRole.data?"Setear Resultados":"¡Enviar Pronóstico!"}</strong>
+                    <div className="text-sm underline">Fase de Grupos</div>
+                </div>
+                }
               </div> :
               <div> 
                 <div>       
-                  <ProdeRoundCard matches={fixtureDataOctavos} countriesData={Countries} title="OCTAVOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={userCurrentGuess}/>
-                  <ProdeRoundCard matches={fixtureDataQarters} countriesData={Countries} title="CUARTOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={userCurrentGuess}/> 
-                  <ProdeRoundCard matches={fixtureDataSemi} countriesData={Countries} title="SEMI FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={userCurrentGuess}/> 
-                  <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={userCurrentGuess}/> 
-                  <ProdeRoundCard matches={fixtureDataFinal} countriesData={Countries} title="FINAL" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={userCurrentGuess}/> 
-                </div> 
-                <SetResult guess={participantGuess2ndPhase} messiRole={messiRole.data} packProde={packProdeEliminationPhase}/>
+                  <ProdeRoundCard matches={fixtureDataOctavos} countriesData={Countries} title="OCTAVOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/>
+                  <ProdeRoundCard matches={fixtureDataQarters} countriesData={Countries} title="CUARTOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
+                  <ProdeRoundCard matches={fixtureDataSemi} countriesData={Countries} title="SEMI FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
+                  <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
+                  <ProdeRoundCard matches={fixtureDataFinal} countriesData={Countries} title="FINAL" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
+                </div>
+                <div onChange={handleCheckboxChange2ndPh} className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
+                  <input type="checkbox" className="w-8"/>
+                  <div className="text-white text-4xl">Revisé mis resultados.</div>
+                </div>
+                {checked2ndPhase?
+                <SetResult guess={packEliminationPhaseGuess} messiRole={messiRole.data} secondPhase={secondPhase} />:
+                <div className={`text-gray-400 bg-gray-200 mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center`}>
+                    <strong>{messiRole.data?"Setear Resultados":"¡Enviar Pronóstico!"}</strong>
+                    <div className="text-sm underline">Fase de Eliminatorias</div>
+                </div>
+                }
               </div> }
             </div>:
             whiteL.data && alreadyDeposited.data.toString() === '0'?
-            <div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>A ponerlaaa &#128184;... deposita 20 DAI para participar!!!
+            <div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>A ponerlaaa &#128184;... deposita 15 DAI para participar!!!
               <div className='flex flex-col items-center gap-2 mt-4'>
-                <ApproveERC20 />
-                <Deposit />
+                {approved.data > 0 || approvedSuccess? <></> : <ApproveERC20 approveSuccessFunction={approveSuccessEvent}/>}
+                <Deposit tokenApproved={approved.data > 0 || approvedSuccess} depositSuccessFunction={depositSuccessEvent}/>
               </div>
             </div>
             :<div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>No estas registrado &#129300;. Contactá a Fede o Juan para participar!!!</div> 
@@ -207,9 +269,8 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
         }
         {connected && messiRole.data?
           <div className='flex flex-col items-center sm:flex-row justify-center gap-8 my-8'>
-            {/* <WhitelistUser />
-            <SetResult />
-            <StoreScores /> */}
+            <WhitelistUser />
+            <StoreScores />
           </div>
           :
           <></>

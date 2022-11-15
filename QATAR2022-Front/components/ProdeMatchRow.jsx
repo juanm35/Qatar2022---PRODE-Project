@@ -31,14 +31,14 @@ function ProdeMatchRow(props) {
                     <div className="ml-0 mr-auto">{props.match.HomeTeam.toUpperCase().slice(0,3)}</div>
                 </div>
                 <div align="center" className="w-1/5 bg-white flex justify-center sm:gap-2 md:gap-1 ">
-                    <input type="number" placeholder={`${props.userCurrentMatchGuess?.home}`} value={input.homeScoreGuess} min="0" className="w-12 text-center" onInput={e => setInput(
+                    <input disabled={props.disableInput} type="number" placeholder={`${props.userCurrentMatchGuess?.home}`} value={input.homeScoreGuess} min="0" max="15" className={`${props.disableInput? "bg-gray-200" : ''} w-12 text-center text-qatarRed`} onInput={e => setInput(
                         prevState => ({
                             ...prevState,
                             ["homeScoreGuess"]: e.target.value*1
                         })
                     )}/>
                     <span className="border-solid border-2 px-2">-</span>
-                    <input type="number" placeholder={props.userCurrentMatchGuess?.away} value={input.awayScoreGuess} min="0" className="w-12 text-center" onInput={e => setInput(
+                    <input disabled={props.disableInput} type="number" placeholder={props.userCurrentMatchGuess?.away} value={input.awayScoreGuess} min="0" max="15" className={`${props.disableInput? "bg-gray-200" : ''} w-12 text-center text-qatarRed`} onInput={e => setInput(
                         prevState => ({
                             ...prevState,
                             ["awayScoreGuess"]: e.target.value*1
