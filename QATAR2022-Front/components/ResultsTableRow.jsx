@@ -16,7 +16,7 @@ function GroupRow(props) {
     const nickNames = [
         {address: '0xb6e2Ab44Ca614E654905C40372518343788238EA', alias: "Juankman Friedone"},
         {address: '0x1446103C5994c8a1c0DC55aB353BacEC3C88A4c6', alias: "Tomson Migoneth"},
-        {address: '0x4e103a7aF4D148793304e317728bA0d5D5ea2a3C', alias: "Da Correnla"},
+        {address: '0x4e103a7aF4D148793304e317728bA0d5D5ea2a3C', alias: "Da Correnola"},
     ]
 
     const currentAlias =  nickNames.find((element) => element.address === props.address)?.alias ??  truncateEthAddress(props.address)
