@@ -4,11 +4,11 @@ function ReglasComponent(props) {
             <div className="bg-qatarSilver w-11/12 sm:w-4/5 mx-auto rounded-md xl:px-16">
               <div className="pt-8 pb-2 px-6 md:px-8 text-qatarRed text-4xl flex flex-col items-center"><strong>Crypto PRODE</strong><em>Qatar 2022</em></div>
               <div className="pt-2 pb-2 px-6 md:px-8 text-black indent-6 text-center text-sm md:text-base"><em>Bienvenidos al Crypto PRODE - Qatar 2022, una aplicación web desarrollada por fede y juan con el único fin de divertirse, unificando los gloriosos mundos de las cripto y el fulbo. </em></div>
-              <div className="pt-2 pb-0 px-6 md:px-8 text-qatarRed indent-6 text-center md:text"><strong><em>Red y Smart Contract</em></strong></div>
+              <div className="pt-2 pb-0 px-6 md:px-8 text-qatarRed indent-6 text-center"><strong><em>Red y Smart Contract</em></strong></div>
               <div className="pt-2 pb-2 px-6 md:px-8 text-black indent-6 text-sm md:text-base">La aplicación esta montada sobre la red de polygon, donde el smart contract de la aplicación recibe la apuesta base en la moneda designada DAI, recibe los resultados pronosticados de cada participante, calcula los puntajes de cada jugar y al finalizar la competencia, pone a disposición los premios a los ganadores para ser reclamados.</div>
-              <div className="pt-2 pb-0 px-6 md:px-8 text-qatarRed indent-6 text-center md:text"><strong><em>Requerimientos</em></strong></div>
+              <div className="pt-2 pb-0 px-6 md:px-8 text-qatarRed indent-6 text-center"><strong><em>Requerimientos</em></strong></div>
               <div className="pt-2 pb-2 px-6 md:px-8 text-black indent-6 text-sm md:text-base">Para participar necesitas tener una wallet de MetaMask (preferentemente), Rainbow, Coinbase Wallet o WalletConnect, y saber hacer una transacción básica en la red de polygon. Vas a necesitar contar con 1 MATIC (token nativo de polygon) aprox en tu wallet para pagar el gas de las transacciones en la red.</div>
-              <div className="pt-2 pb-2 px-6 md:px-8 text-qatarRed text-2xl text-center md:text"><strong>Mecánica de Juego</strong></div>
+              <div className="pt-2 pb-2 px-6 md:px-8 text-qatarRed text-2xl text-center md:text-left"><strong>Mecánica de Juego</strong></div>
               <div className="pt-2 md:pb-2 px-6 md:px-8 text-black indent-6 text-md text-sm md:text-base">1. Enviá tu address a fede o Juan para que te registren.</div>
               <div className="pt-2 md:pb-2 px-6 md:px-8 text-black indent-6 text-md text-sm md:text-base">2. Conectá tu wallet a la red de polygon desde la página de <strong>Mi Prode</strong>.</div>   
               <div className="pt-2 md:pb-2 px-6 md:px-8 text-black indent-6 text-md text-sm md:text-base">3. Si no tenes MATIC, fondea la wallet con aprox 1 Matic (0.93 usd aprox.). Podes enviar desde algún exchange o a desde otra red a través de algún bridge.</div>
@@ -30,7 +30,7 @@ function ReglasComponent(props) {
               </ul>
               <div className="pt-2 px-8 text-black indent-6 text-sm md:text-base">7. Una vez finalizado el mundial, el smart contract se encargará de calular los premios a los ganadores y los pondrá a disposición de los mismos para ser reclamados.</div>
               <div className="pt-2 px-8 text-black indent-6 text-sm md:text-base">8. En la paǵina <strong>Info</strong> se puede consultar fixture y resultados reales del Mundial!</div>
-              <div className="pt-2 pb-2 px-8 text-qatarRed text-2xl text-center md:text"><strong>Puntajes</strong></div>
+              <div className="pt-2 pb-2 px-8 text-qatarRed text-2xl text-center md:text-left"><strong>Puntajes</strong></div>
               <div className="pt-2 px-8 text-black indent-6 text-sm md:text-base">El puntaje máximo posible a sumar por cada partido es de <strong>30 Pts</strong>, desglosado de la siguiente forma:</div>
               <ul className="list-disc list-inside pl-4">
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Acertar el ganador-perdedor o si es empate suma <strong>16 Pts</strong>.</li>
@@ -39,12 +39,12 @@ function ReglasComponent(props) {
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Acertar la cantidad de goles del equipo visitante suma <strong>5 Pts</strong> extra. (Se puede sumar independientemente de haber acertado el ganador-perdedor o la diferencia de gol)</li>
               </ul>
               <div className="pt-2 px-8 text-black indent-6 text-sm md:text-base">En la página de <strong>Posiciones</strong> se podrá ver la tabla de posiciones con todos puntajes de los participantes registrados.</div>
-              <div className="pt-8 pb-2 px-8 text-qatarRed text-2xl text-center md:text"><strong>Premios</strong></div>
+              <div className="pt-8 pb-2 px-8 text-qatarRed text-2xl text-center md:text-left"><strong>Premios</strong></div>
               <div className="pl-12 md:pb-2 px-8 text-black text-sm md:text-base">Del monto total recaudado por el protocolo, los premios se distribuiran de la siguiente manera:</div>
               <ul className="list-decimal list-inside pl-8 pb-4">
-                <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text">Primer Puesto: <strong>60%</strong>&#127942;.</li>
-                <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text">Segundo Puesto: <strong>30%</strong>&#129352;.</li>
-                <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text">Tercer Puesto: <strong>10%</strong>&#129353;.</li>
+                <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text-left">Primer Puesto: <strong>60%</strong>&#127942;.</li>
+                <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text-left">Segundo Puesto: <strong>30%</strong>&#129352;.</li>
+                <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text-left">Tercer Puesto: <strong>10%</strong>&#129353;.</li>
               </ul>
             </div>
     );
