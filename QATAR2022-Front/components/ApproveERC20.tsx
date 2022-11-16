@@ -38,7 +38,7 @@ export function ApproveERC20(props) {
     ],
     functionName: "approve",
     // Hardcoded prode contract address and 50 tokens (when deposit amount is defined we change it)
-    args: [addressesData.contractAddress, utils.parseEther("50")],
+    args: [addressesData.contractAddress, utils.parseEther("15")],
     enabled: true,
   })
 
