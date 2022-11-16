@@ -16,7 +16,7 @@ export function ApproveERC20(props) {
     isError: isPrepareError,
   } = usePrepareContractWrite({
     // MockToken address
-    addressOrName: '0xF5aA8e3C6BA1EdF766E197a0bCD5844Fd1ed8A27',
+    addressOrName: addressesData.tokenAddress,
     // ERC20 token interface for approving a token
     contractInterface: [
       {
