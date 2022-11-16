@@ -35,11 +35,11 @@ export function Deposit(props) {
       <div onClick={write} className={`${props.tokenApproved? '' : "hidden"} text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer`}>
         <strong>
           {isLoading ? 'Enviando...' : 'Inscribirse'}
-          <div>15.00 USDC</div>
+          <div>15.00 DAI</div>
         </strong>
       </div>
       <div className={`${props.tokenApproved? 'hidden' : ''} text-gray-400 bg-gray-200 rounded-lg p-3 w-60 text-center text-lg cursor-pointer`}>
-        <div>Inscribirse</div><div>15.00 USDC</div>
+        <div>Inscribirse</div><div>15.00 DAI</div>
       </div>
       <div>
           {isSuccess && (

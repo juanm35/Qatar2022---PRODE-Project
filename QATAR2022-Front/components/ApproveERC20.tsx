@@ -55,7 +55,7 @@ export function ApproveERC20(props) {
     <div className="flex flex-col items-center">
       <div onClick={write} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-60 text-center text-lg hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'>
         <strong>
-          {isLoading ? 'Aprobando...' : 'Aprobar USDC'}
+          {isLoading ? 'Aprobando...' : 'Aprobar DAI'}
         </strong>
       </div>
       <strong>

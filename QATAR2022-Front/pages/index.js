@@ -257,7 +257,7 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               </div> }
             </div>:
             whiteL.data && alreadyDeposited.data.toString() === '0'?
-            <div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>A ponerlaaa &#128184;... deposita 15 USDC para participar!!!
+            <div className='text-white text-lg md:text-2xl w-full text-center px-6 py-4 lg:py-10'>A ponerlaaa &#128184;... deposita 15 DAI para participar!!!
               <div className='flex flex-col items-center gap-2 mt-4'>
                 {approved.data > 0 || approvedSuccess? <></> : <ApproveERC20 approveSuccessFunction={approveSuccessEvent}/>}
                 <Deposit tokenApproved={approved.data > 0 || approvedSuccess} depositSuccessFunction={depositSuccessEvent}/>
