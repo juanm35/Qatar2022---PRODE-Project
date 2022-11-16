@@ -18,7 +18,7 @@ function GroupRow(props) {
             <td align="center" className="w-1/5">{props.index+1}</td>
             <td align="center" className="w-3/5 truncate">
                 <div className="w-full truncate">
-                    {truncateEthAddress(props.address)}
+                    {props.address === '0xb6e2Ab44Ca614E654905C40372518343788238EA'? "Juankman Friedone" : truncateEthAddress(props.address)}
                 </div>
             </td>
             <td align="center" className="w-1/5">{props.score}</td>
