@@ -18,7 +18,7 @@ export default function Resultados() {
 
 
 const [scores, setScores] = useState([{address: '', score: 0}]);
-useEffect(() => setScores(userScores.data[0].map((address,index) => { return {"address": address, "score": userScores.data[1][index].toNumber()} })),[])
+useEffect(() => userScores.data? setScores(userScores.data[0].map((address,index) => { return {"address": address, "score": userScores.data[1][index].toNumber()} })):console.log("Scores mounted"),[])
 
 function compareScore(a, b) {
   return (b.score-a.score);
