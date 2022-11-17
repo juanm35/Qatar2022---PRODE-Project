@@ -212,7 +212,7 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
           {whiteL.data && (alreadyDeposited?.data.toString() != '0' || depositSuccess) || messiRole.data?
           <div>
           {messiRole.data? <div className='text-white text-6xl bg-qatarGold md:text-6xl w-full text-center pt-12 mt-4 pb-10 lg:pb-12'>¡¡¡MESSI USER!!!</div>:<></>}
-            <div className='flex gap-1 pb-4 items-center sm:flex-row justify-center md:gap-8 md:my-8'>
+            <div className='flex gap-1 pb-2 md:pb-4 items-center sm:flex-row justify-center md:gap-8 mt-4 md:my-8'>
               <div onClick={handleGroupPhaseClick} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-40 md:w-60 text-center text-base hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'><strong>Grupos</strong></div>
               <div onClick={handleEliminationPhaseClick} className='text-qatarRed bg-qatarSilver rounded-lg p-3 w-40 md:w-60 text-center text-base hover:bg-qatarRed hover:text-qatarSilver cursor-pointer'><strong>Eliminatorias</strong></div>
             </div>
