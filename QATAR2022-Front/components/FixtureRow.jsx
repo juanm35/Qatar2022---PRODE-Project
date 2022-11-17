@@ -1,8 +1,7 @@
 
 
 function MatchCard(props) {
-    const dateArr = props.match.DateUtc.slice(0, -1).split(/[- :]/);
-    const matchDate = new Date(dateArr[0], dateArr[1]-1, dateArr[2], dateArr[3], dateArr[4], dateArr[5]);
+    const matchDate = new Date(props.match.DateUtc.replace(" ", "T"));
     const days = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
     return (
         <div className="">
