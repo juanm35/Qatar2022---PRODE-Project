@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 function ProdeMatchRow(props) {
-    const matchDate = new Date(props.match.DateUtc)
+    const matchDate = new Date(props.match.DateUtc.replace(" ", "T"))
     const days = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
     const translateGroup = {
         groupA: "Grupo A",
