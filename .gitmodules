@@ -1,0 +1,4 @@
+[submodule "prode-contracts"]
+	path = prode-contracts
+	url = https://github.com/federava/prode-contracts
+	branch = main
