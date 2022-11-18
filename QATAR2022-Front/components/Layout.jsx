@@ -84,6 +84,7 @@ export default function Layout({ children }) {
           </div>    
         </div>
         <main>{children}</main>
+        <div align="right" className="-mt-16 text-white pr-4"><div className="text-lg">with ⚽ by Juan & Fede</div><em>audited by Tomi</em></div>
       </>
   )
 }
