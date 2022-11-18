@@ -84,7 +84,7 @@ export default function Layout({ children }) {
           </div>    
         </div>
         <main>{children}</main>
-        <div className="-mt-16 text-white pr-4 text-center"><div className="text-lg">with ⚽ by Juan & Fede</div><em>audited by Tomi</em></div>
+        <div className="-mt-20 text-white pr-4 text-center"><div className="text-lg">with ⚽ by Juan & Fede</div><em>audited by Tomi</em></div>
       </>
   )
 }

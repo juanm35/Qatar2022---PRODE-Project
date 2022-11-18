@@ -201,7 +201,7 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
 
   return (
     <div className=" bg-qatar bg-complete">
-      <div className="py-20 bg-transparent/[0.3] min-h-screen">
+      <div className="py-20 bg-transparent/[0.3] min-h-screen pb-32">
         <h1 className='text-white text-6xl md:text-8xl w-full text-center pt-12 pb-10 lg:pb-12'><em>Mi Prode</em></h1> 
         <div className="mx-auto mt-2 lg:mt-8 flex justify-center">
           <ConnectButton label="Conectar Wallet"/>

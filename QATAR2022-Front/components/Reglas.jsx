@@ -4,9 +4,9 @@ function ReglasComponent(props) {
             <div className="bg-qatarSilver w-11/12 sm:w-4/5 mx-auto rounded-md xl:px-16">
               <div className="pt-8 pb-2 px-6 md:px-8 text-qatarRed text-4xl flex flex-col items-center"><strong>Crypto PRODE</strong><em>Qatar 2022</em></div>
               <div className="pt-2 pb-2 px-6 md:px-8 text-black indent-6 text-center text-sm md:text-base"><em>Bienvenidos al Crypto PRODE - Qatar 2022, una aplicación web desarrollada por fede y juan con el único fin de divertirse, unificando los gloriosos mundos de las cripto y el fulbo. </em></div>
-              <div className="pt-2 pb-0 px-6 md:px-8 text-qatarRed indent-6 text-center"><strong><em>Red y Smart Contract</em></strong></div>
+              <div className="pt-2 pb-0 px-6 md:px-8 text-qatarRed text-center"><strong><em>Red y Smart Contract</em></strong></div>
               <div className="pt-2 pb-2 px-6 md:px-8 text-black indent-6 text-sm md:text-base text-center lg:text-left">La aplicación esta montada sobre la red de polygon, donde el smart contract de la aplicación recibe la apuesta base en la moneda designada DAI, recibe los resultados pronosticados de cada participante, calcula los puntajes de cada jugar y al finalizar la competencia, pone a disposición los premios a los ganadores para ser reclamados.</div>
-              <div className="pt-2 pb-0 px-6 md:px-8 text-qatarRed indent-6 text-center"><strong><em>Requerimientos</em></strong></div>
+              <div className="pt-2 pb-0 px-6 md:px-8 text-qatarRed text-center"><strong><em>Requerimientos</em></strong></div>
               <div className="pt-2 pb-2 px-6 md:px-8 text-black indent-6 text-sm md:text-base text-center lg:text-left">Para participar necesitas tener una wallet de MetaMask (preferentemente), Rainbow, Coinbase Wallet o WalletConnect, y saber hacer una transacción básica en la red de polygon. Vas a necesitar contar con 1 MATIC (token nativo de polygon) aprox en tu wallet para pagar el gas de las transacciones en la red.</div>
               <div className="pt-2 pb-2 px-6 md:px-8 text-qatarRed text-2xl text-center md:text-left"><strong>Mecánica de Juego</strong></div>
               <div className="pt-2 md:pb-2 px-6 md:px-8 text-black indent-6 text-md text-sm md:text-base">1. Enviá tu address a fede o Juan para que te registren.</div>
@@ -40,7 +40,7 @@ function ReglasComponent(props) {
               </ul>
               <div className="pt-2 px-8 text-black indent-6 text-sm md:text-base">En la página de <strong>Posiciones</strong> se podrá ver la tabla de posiciones con todos puntajes de los participantes registrados.</div>
               <div className="pt-8 pb-2 px-8 text-qatarRed text-2xl text-center md:text-left"><strong>Premios</strong></div>
-              <div className="pl-12 md:pb-2 px-8 text-black text-sm md:text-base">Del monto total recaudado por el protocolo, los premios se distribuiran de la siguiente manera:</div>
+              <div className="indent-6 md:pb-2 px-8 text-black text-sm md:text-base">Del monto total recaudado por el protocolo, los premios se distribuiran de la siguiente manera:</div>
               <ul className="list-decimal list-inside pl-8 pb-4">
                 <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text-left">Primer Puesto: <strong>60%</strong>&#127942;.</li>
                 <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text-left">Segundo Puesto: <strong>30%</strong>&#129352;.</li>
