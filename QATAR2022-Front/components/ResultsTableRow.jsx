@@ -18,7 +18,8 @@ function GroupRow(props) {
         {address: '0x1446103C5994c8a1c0DC55aB353BacEC3C88A4c6', alias: "The Graph boy"},
         {address: '0x4e103a7aF4D148793304e317728bA0d5D5ea2a3C', alias: "KYC Degen"},
         {address: '0x168f6572cD792102082BB8536D50ad5d7CD95943', alias: "King POAP"},
-        {address: '0x551D7732A5b0Da697aDE54231B204780C17feC56', alias: "Federik Buterin"}
+        {address: '0x551D7732A5b0Da697aDE54231B204780C17feC56', alias: "Federik Buterin"},
+        {address: '0x881B0bD38A37Bd3d9Ca7D0a49a8C51278A64215B', alias: "Elon Mosq"}
         
 
     ]
