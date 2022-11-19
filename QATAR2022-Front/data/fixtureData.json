@@ -9,8 +9,8 @@
         "HomeTeam": "Qatar",
         "AwayTeam": "Ecuador",
         "Group": "groupA",
-        "HomeTeamScore": 1,
-        "AwayTeamScore": 0
+        "HomeTeamScore": null,
+        "AwayTeamScore": null
     },
     {
         "MatchNumber": 3,
