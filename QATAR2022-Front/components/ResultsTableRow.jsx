@@ -23,7 +23,8 @@ function GroupRow(props) {
         {address: '0x8537487a26ed8E502492A7a905C83466bb7E8293', alias: "Suareth (Tomas S)"},
         {address: '0xa97C676B71e1200D712f5F1e3b93E81daEAE51F5', alias: "The Chalo (Gonzo E)"},
         {address: '0x50427f59edf8d5A26cD6cF45B8f512115BCc5FF1', alias: "Zlataitan (Tito Z)"},
-        {address: '0x90b99EA336bB4d6EAD1a409036e6e2ae8e44eF3C', alias: "Fürer Mike (Pigue)"}
+        {address: '0x90b99EA336bB4d6EAD1a409036e6e2ae8e44eF3C', alias: "Fürer Mike (Pigue)"},
+        {address: '0xeB13FD078AB234737cC8621Be00F007cA35bB3c3', alias: "Eth Addict (Pedro B)"}
         
 
     ]
