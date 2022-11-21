@@ -19,7 +19,6 @@ function ReglasComponent(props) {
               <ul className="list-disc list-inside pl-8">
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base"> A menos de 30 minutos del inicio del partido los resultados ya no serán tomados como válidos. &#128680;</li>
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base"> Al enviar resultados, todos los partidos que se hayan pronosticado se registraran, sobreescribiendo los resultados anteriores si los hubiese y siempre y cuando se cumpla el punto anterior.&#128680;</li>
-                <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base"> Se puede dejar resultados vacíos! Al enviar resultados, aquellos partidos no completados no seran tomados en cuenta, dejando como válido el resultado registrado anteriormente si lo hubiese.&#128680;</li>
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base"> No se tomará como válido pronosticos de mas de 14 goles por equipo (Ej. no son válidos los siguientes resultados: 15-15 o 16-1 o 3-17).&#128680;</li>
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base"> No se tomará como válido pronosticos que dejen uno de los dos equipos sin completar el score (Ej. no son válidos los siguientes resultados: 2- o -1 o 5-).&#128680;</li>
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base"> Se puede dejar partidos enteros vacíos! Al enviar resultados, aquellos partidos no completados o no válidos no seran tomados en cuenta, dejando como válido el resultado registrado anteriormente si lo hubiese.</li>              
@@ -45,6 +44,14 @@ function ReglasComponent(props) {
                 <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text-left">Primer Puesto: <strong>60%</strong>&#127942;.</li>
                 <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text-left">Segundo Puesto: <strong>30%</strong>&#129352;.</li>
                 <li className="pt-2 md:pb-2 px-8 text-black text-sm md:text-base text-center md:text-left">Tercer Puesto: <strong>10%</strong>&#129353;.</li>
+              </ul>
+              <div className="indent-6 md:pb-2 px-8 text-black text-sm md:text-base">En caso de empate en alguna de las posiciones, los premios se reparten en partes iguales absorbiendo los porcentajes de las posiciones inferiores. Algunos ejemplos:</div>
+
+              <ul className="list-disc list-inside pl-4 pb-4">
+                <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Triple empate en la 1era posición: se reparten el 100% del premio en partes iguales.</li>
+                <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">1 solo primer puesto + doble empate en el segundo puesto: el 1ero se lleva el 60%, los segundos se reparten en partes iguales el 40% (30% + 10%) restante.</li>
+                <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Doble empate en el primer puesto + doble empate en el segundo puesto: los primeros se reparten en partes iguales el 90% (60% + 30%), y los segundos se reparten en partes iguales el 10% restante.</li>
+                <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">1 solo primer puesto + 1 solo segundo puesto + triple empate en el 3er puesto: el primero se lleva su 60%, el segundo su 30%, y los terceros se reparten en partes iguales el restante 10%.</li>
               </ul>
             </div>
     );
