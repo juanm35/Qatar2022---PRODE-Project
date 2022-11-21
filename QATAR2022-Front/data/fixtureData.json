@@ -20,8 +20,8 @@
         "HomeTeam": "Inglaterra",
         "AwayTeam": "Iran",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 6,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 2,
