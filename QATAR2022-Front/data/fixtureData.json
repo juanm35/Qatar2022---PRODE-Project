@@ -64,8 +64,8 @@
         "HomeTeam": "Dinamarca",
         "AwayTeam": "Tunez",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 7,
