@@ -108,8 +108,8 @@
         "HomeTeam": "Alemania",
         "AwayTeam": "Japon",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 10,
