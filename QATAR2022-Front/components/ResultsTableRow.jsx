@@ -37,8 +37,9 @@ function GroupRow(props) {
             <td align="center" className="w-1/5">{props.index+1}</td>
             <td align="center" className="w-3/5 truncate">
                 <div className="w-full truncate">
+                {props.price === "First"? <span>&#129351;</span> : props.price === "Second"? <span>&#129352;</span> : props.price === "Third"? <span>&#129353;</span> : ''}
                     {currentAlias}
-                    {props.price === "First"? <span>&#129351;</span> : props.price === "Second"? <span>&#129352;</span> : props.price === "Third"? <span>&#129353;</span> : ''}
+                    
                 </div>
             </td>
             <td align="center" className="w-1/5">{props.score}</td>
