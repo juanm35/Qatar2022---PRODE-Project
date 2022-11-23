@@ -4,6 +4,7 @@ import {useContractRead} from 'wagmi';
 import { localhost } from 'wagmi/chains'
 import contractAbi from "../../contractAbi.json";
 import addressesData from '../../addresses.json'
+import NextMatches from '../../components/NextMatches';
 
 export default function Resultados() {  
   
@@ -29,6 +30,7 @@ function compareScore(a, b) {
         <div className="py-20 bg-transparent/[0.3] min-h-screen pb-32">
           <h1 className='text-white text-6xl md:text-8xl w-full text-center pt-12 pb-12'><em>Posiciones</em></h1>           
           <ResultsTable scores={scores.sort(compareScore)}/>
+          <NextMatches/>
         </div>
       </div>
     )
