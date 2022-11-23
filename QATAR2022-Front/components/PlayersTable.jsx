@@ -110,7 +110,7 @@ function PlayersTable(props) {
             <table align="center" className='text-black'>
                 <thead>
                     <tr>
-                        <th className="w-2/5 text-lg"><strong>Jugador</strong><hr className=''></hr></th>
+                        <th className="text-lg"><strong>Jugador</strong><hr className=''></hr></th>
                         <th align="center" className="text-lg"><strong>Pronóstico</strong><hr></hr></th>
                     </tr>
                 </thead>
