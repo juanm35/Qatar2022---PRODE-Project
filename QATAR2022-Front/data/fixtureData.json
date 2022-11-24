@@ -163,8 +163,8 @@
         "HomeTeam": "Portugal",
         "AwayTeam": "Ghana",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 3,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 16,
