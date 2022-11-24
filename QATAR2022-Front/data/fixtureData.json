@@ -141,8 +141,8 @@
         "HomeTeam": "Suiza",
         "AwayTeam": "Camerun",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 14,
