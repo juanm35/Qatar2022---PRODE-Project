@@ -174,8 +174,8 @@
         "HomeTeam": "Brasil",
         "AwayTeam": "Serbia",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 17,
