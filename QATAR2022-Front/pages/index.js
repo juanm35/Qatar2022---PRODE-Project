@@ -26,10 +26,12 @@ const [secondPhase, setSecondPhase] = useState(false);
 
 function handleGroupPhaseClick() {
   setSecondPhase(false)
+  setSendError2ndPhase(false)
 }
 
 function handleEliminationPhaseClick() {
   setSecondPhase(true)
+  setSendError(false)
 }
 
 // --- Set variable for checking if user is connected
@@ -177,14 +179,28 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
   const [checked2ndPhase, setChecked2ndPhase] = useState(false)
   const [packGroupPhaseGuess, setPackGroupPhaseGuess] = useState({results: [], ids: []})
   const [packEliminationPhaseGuess, setPackEliminationPhaseGuess] = useState({results: [], ids: []})
+  const [sendError, setSendError] = useState(false)
+  const [sendError2ndPhase, setSendError2ndPhase] = useState(false)
   function handleCheckboxChange(e) {
-    setChecked(e.target.checked)
-    setPackGroupPhaseGuess(packProde(participantGuess))
+    if(participantGuess.filter((match) => typeof(match.homeScoreGuess) != typeof(match.awayScoreGuess)).length >0) {
+      e.preventDefault()
+      setSendError(true)
+    } else {
+      setSendError(false)
+      setChecked(e.target.checked)
+      setPackGroupPhaseGuess(packProde(participantGuess))
+    }
   }
 
   function handleCheckboxChange2ndPh(e) {
-    setChecked2ndPhase(e.target.checked)
+    if(participantGuess2ndPhase.filter((match) => typeof(match.homeScoreGuess) != typeof(match.awayScoreGuess)).length >0) {
+      e.preventDefault()
+      setSendError2ndPhase(true)
+    } else {
+      setSendError2ndPhase(false)
+      setChecked2ndPhase(e.target.checked)
     setPackEliminationPhaseGuess(packProdeEliminationPhase(participantGuess2ndPhase))
+    }    
   }
 
   const [approvedSuccess, setApprovedSuccess] = useState(false)
@@ -223,10 +239,11 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
                   <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked}/> 
                   <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked}/> 
                 </div> 
-                <div onChange={handleCheckboxChange} className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
-                  <input type="checkbox" className="w-8"/>
+                <div className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
+                  <input onClick={handleCheckboxChange} type="checkbox" className="w-8"/>
                   <div className="text-white text-lg md:text-4xl">Revisé mis resultados.</div>
                 </div>
+                {sendError?<div className='text-qatarRed bg-qatarSilver w-fit text-lg md:text-2xl text-center px-6 py-4 lg:py-4 lg:rounded-full mx-auto mt-2 mb-2'>No se puede dejar resultados parcialmente completos (ej. "2 - "). Asegurate de estar completando los goles de ambos equipos para todos los partidos que estes intentando enviar. &#10060;</div>:<></>}
                 {checked?
                   <SetResult guess={packGroupPhaseGuess} messiRole={messiRole.data} secondPhase={secondPhase}/> :
                   <div className={`text-gray-400 bg-gray-200 mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center`}>
@@ -243,10 +260,11 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
                   <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
                   <ProdeRoundCard matches={fixtureDataFinal} countriesData={Countries} title="FINAL" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
                 </div>
-                <div onChange={handleCheckboxChange2ndPh} className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
-                  <input type="checkbox" className="w-8"/>
+                <div className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
+                  <input onClick={handleCheckboxChange2ndPh}  type="checkbox" className="w-8"/>
                   <div className="text-white text-4xl">Revisé mis resultados.</div>
                 </div>
+                {sendError2ndPhase?<div className='text-qatarRed bg-qatarSilver w-fit text-lg md:text-2xl text-center px-6 py-4 lg:py-4 lg:rounded-full mx-auto mt-2 mb-2'>No se puede dejar resultados parcialmente completos (ej. "2 - "). Asegurate de estar completando los goles de ambos equipos para todos los partidos que estes intentando enviar. &#10060;</div>:<></>}
                 {checked2ndPhase?
                 <SetResult guess={packEliminationPhaseGuess} messiRole={messiRole.data} secondPhase={secondPhase} />:
                 <div className={`text-gray-400 bg-gray-200 mx-auto cursor-pointer shadow-xl rounded-lg text-2xl md:text-4xl w-fit px-6 py-8 text-center`}>
