@@ -105,6 +105,21 @@ function PlayersTable(props) {
         chainId: 137,
       });
 
+      // const playersData = [
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
+      // ]
+
     return(
         <div className="pt-4">
             <table align="center" className='text-black'>
