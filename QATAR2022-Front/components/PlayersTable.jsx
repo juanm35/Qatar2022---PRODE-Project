@@ -7,6 +7,17 @@ import { unpackResult } from "../helpers";
 
 function PlayersTable(props) {
 
+     // --- 3. READ CONTRACT: users score?
+    const userScores = useContractRead({
+      addressOrName: addressesData.contractAddress,
+      contractInterface: contractAbi,
+      functionName: 'getScores',
+      args: [[]],
+      chainId: 137,
+    })
+
+    
+
     const matchID = props.match.MatchNumber-1
 
     const juankmanResult = useContractRead({
@@ -105,20 +116,26 @@ function PlayersTable(props) {
         chainId: 137,
       });
 
-      // const playersData = [
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      //   {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away},
-      // ]
+       const playersData = [
+         {playerName: "Juankman Friedone", homeGuess: unpackResult(juankmanResult.data).home,  awayGuess: unpackResult(juankmanResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0xb6e2Ab44Ca614E654905C40372518343788238EA')]},
+         {playerName: "The Graph boy", homeGuess: unpackResult(graphBoyResult.data).home,  awayGuess: unpackResult(graphBoyResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x1446103C5994c8a1c0DC55aB353BacEC3C88A4c6')]},
+         {playerName: "KYC Degen", homeGuess: unpackResult(KYCdegenResult.data).home,  awayGuess: unpackResult(KYCdegenResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x4e103a7aF4D148793304e317728bA0d5D5ea2a3C')]},
+         {playerName: "King POAP", homeGuess: unpackResult(kingPOAPResult.data).home,  awayGuess: unpackResult(kingPOAPResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x168f6572cD792102082BB8536D50ad5d7CD95943')]},
+         {playerName: "Federik Buterin", homeGuess: unpackResult(federikButerinResult.data).home,  awayGuess: unpackResult(federikButerinResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x551D7732A5b0Da697aDE54231B204780C17feC56')]},
+         {playerName: "Elon Mosq", homeGuess: unpackResult(elonMosqResult.data).home,  awayGuess: unpackResult(elonMosqResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x881B0bD38A37Bd3d9Ca7D0a49a8C51278A64215B')]},
+         {playerName: "Frodoneta", homeGuess: unpackResult(frodonetaResult.data).home,  awayGuess: unpackResult(frodonetaResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x8537487a26ed8E502492A7a905C83466bb7E8293')]},
+         {playerName: "The Chalo", homeGuess: unpackResult(theChaloResult.data).home,  awayGuess: unpackResult(theChaloResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0xa97C676B71e1200D712f5F1e3b93E81daEAE51F5')]},
+         {playerName: "Zlataitan", homeGuess: unpackResult(zlataitanResult.data).home,  awayGuess: unpackResult(zlataitanResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x50427f59edf8d5A26cD6cF45B8f512115BCc5FF1')]},
+         {playerName: "Fürer Mike", homeGuess: unpackResult(furerMikeResult.data).home,  awayGuess: unpackResult(furerMikeResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x90b99EA336bB4d6EAD1a409036e6e2ae8e44eF3C')]},
+         {playerName: "Eth Addict", homeGuess: unpackResult(ethAddictResult.data).home,  awayGuess: unpackResult(ethAddictResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0xeB13FD078AB234737cC8621Be00F007cA35bB3c3')]},
+         {playerName: "Incognito User", homeGuess: unpackResult(incognitoUserResult.data).home,  awayGuess: unpackResult(incognitoUserResult.data).away, score: userScores.data[1][userScores.data[0].indexOf('0x403E66Eab56b466C2F10186D8e67aF715181a74a')]},
+       ]
+
+       function compareScore(a, b) {
+        return (b.score-a.score);
+      }
+      
+       const orderedPlayersData = playersData.sort(compareScore)
 
     return(
         <div className="pt-4">
@@ -130,18 +147,7 @@ function PlayersTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <PlayersTableRow playerName="Juankman Friedone" homeGuess={unpackResult(juankmanResult.data).home} awayGuess={unpackResult(juankmanResult.data).away}/>
-                    <PlayersTableRow playerName="The Graph boy" homeGuess={unpackResult(graphBoyResult.data).home} awayGuess={unpackResult(graphBoyResult.data).away}/>
-                    <PlayersTableRow playerName="KYC Degen" homeGuess={unpackResult(KYCdegenResult.data).home} awayGuess={unpackResult(KYCdegenResult.data).away}/>
-                    <PlayersTableRow playerName="Federik Buterin" homeGuess={unpackResult(federikButerinResult.data).home} awayGuess={unpackResult(federikButerinResult.data).away}/>
-                    <PlayersTableRow playerName="King POAP" homeGuess={unpackResult(kingPOAPResult.data).home} awayGuess={unpackResult(kingPOAPResult.data).away}/>
-                    <PlayersTableRow playerName="Elon Mosq" homeGuess={unpackResult(elonMosqResult.data).home} awayGuess={unpackResult(elonMosqResult.data).away}/>
-                    <PlayersTableRow playerName="Frodoneta" homeGuess={unpackResult(frodonetaResult.data).home} awayGuess={unpackResult(frodonetaResult.data).away}/>
-                    <PlayersTableRow playerName="The Chalo" homeGuess={unpackResult(theChaloResult.data).home} awayGuess={unpackResult(theChaloResult.data).away}/>
-                    <PlayersTableRow playerName="Zlataitan" homeGuess={unpackResult(zlataitanResult.data).home} awayGuess={unpackResult(zlataitanResult.data).away}/>
-                    <PlayersTableRow playerName="Incognito User" homeGuess={unpackResult(incognitoUserResult.data).home} awayGuess={unpackResult(incognitoUserResult.data).away}/>
-                    <PlayersTableRow playerName="Fürer Mike" homeGuess={unpackResult(furerMikeResult.data).home} awayGuess={unpackResult(furerMikeResult.data).away}/>
-                    <PlayersTableRow playerName="Eth Addict" homeGuess={unpackResult(ethAddictResult.data).home} awayGuess={unpackResult(ethAddictResult.data).away}/>
+                  {orderedPlayersData.map((player) =>  <PlayersTableRow playerName={player.playerName} homeGuess={player.homeGuess} awayGuess={player.awayGuess}/>)}
                 </tbody>
             </table>
         </div>

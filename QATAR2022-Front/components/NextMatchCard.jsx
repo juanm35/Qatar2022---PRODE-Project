@@ -6,7 +6,7 @@ function NextMatchCard(props) {
     function compareMatchDate(a, b) {
         let dateA = new Date(a.DateUtc)
         let dateB = new Date(b.DateUtc)
-        return dateA - dateB;
+        return dateB - dateA;
     }
     let sortedMatches = props.matches.sort(compareMatchDate)
     
