@@ -185,8 +185,8 @@
         "HomeTeam": "Gales",
         "AwayTeam": "Iran",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 18,
