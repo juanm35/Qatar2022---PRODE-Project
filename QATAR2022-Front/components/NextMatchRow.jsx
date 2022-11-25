@@ -12,6 +12,12 @@ function NextMatchRow(props) {
         groupF: "Grupo F",
         groupG: "Grupo G",
         groupH: "Grupo H",
+        '8vosFinal': "Octavos de Final",
+        QuarterFinal: "Cuartos de Final",
+        SemiFinal: "Semi Final",
+        Final: "Final",
+        '3rdAnd4th': "Tercer y Cuarto Puesto"
+        
     }
     return (
         <div className=" py-2 md:py-2 mx-2 sm:mx-4 bg-qatarSilver">

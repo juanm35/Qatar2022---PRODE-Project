@@ -12,6 +12,11 @@ function ProdeMatchRow(props) {
         groupF: "Grupo F",
         groupG: "Grupo G",
         groupH: "Grupo H",
+        '8vosFinal': "Octavos de Final",
+        QuarterFinal: "Cuartos de Final",
+        SemiFinal: "Semi Final",
+        Final: "Final",
+        '3rdAnd4th': "Tercer y Cuarto Puesto"
     }
     const [input, setInput] = useState({"matchID": props.match.MatchNumber, "homeScoreGuess": props?.homeScoreGuess ?? '', "awayScoreGuess": props?.homeScoreGuess ?? ''});
     useEffect(() => {
