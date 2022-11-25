@@ -218,8 +218,8 @@
         "HomeTeam": "Inglaterra",
         "AwayTeam": "USA",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 21,
