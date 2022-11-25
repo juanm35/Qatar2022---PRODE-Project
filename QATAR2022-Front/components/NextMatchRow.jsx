@@ -14,7 +14,7 @@ function NextMatchRow(props) {
         groupH: "Grupo H",
     }
     return (
-        <div className="hover:shadow-xl border-2 border-gray-200 rounded-xl border-solid py-2 md:py-2 mx-2 sm:mx-4 bg-qatarSilver">
+        <div className=" py-2 md:py-2 mx-2 sm:mx-4 bg-qatarSilver">
             {/* <div align="center" className="text-lg"> <strong>{`Partido N° ${props.match.MatchNumber}`}</strong></div> */}
             <div align="center" className="text-lg"><strong>{translateGroup[`${props.match.Group}`]}</strong></div>
             <div align="center"><em>{props.match.Location}</em></div>

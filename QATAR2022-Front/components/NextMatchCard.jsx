@@ -28,7 +28,7 @@ function NextMatchCard(props) {
                  {showCard? 
                 <div className={`grid grid-cols-1 ${sortedMatches.length>1?"md:grid-cols-2":'md:px-20'}`}>
                     {sortedMatches.map((match,index) => 
-                        <div key={`Match${index}-${props.title}-${match.MatchNumber}`} className="py-2 ">
+                        <div key={`Match${index}-${props.title}-${match.MatchNumber}`} className="hover:shadow-xl border-2 border-gray-200 rounded-xl border-solid py-2 ">
                             <NextMatchRow match={match} homeFlag={props.countriesData[`${match.Group}`].filter((country) => country.name === match.HomeTeam)[0]?.flag} awayFlag={props.countriesData[match.Group].filter((country) => country.name === match.AwayTeam)[0]?.flag} topBar={index === 0? true : false}/>
                             <PlayersTable match={match}/>
                         </div>
