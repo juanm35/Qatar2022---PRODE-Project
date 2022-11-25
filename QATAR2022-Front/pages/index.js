@@ -235,9 +235,9 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               {!secondPhase?
               <div>
                 <div>       
-                  <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked}/>
-                  <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked}/> 
-                  <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked}/> 
+                  <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked} phase="FECHA1" key="Round1Card"/>
+                  <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked} key="Round2Card"/> 
+                  <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked} key="Round3Card"/> 
                 </div> 
                 <div className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
                   <input onClick={handleCheckboxChange} type="checkbox" className="w-8"/>
@@ -254,11 +254,11 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               </div> :
               <div> 
                 <div>       
-                  <ProdeRoundCard matches={fixtureDataOctavos} countriesData={Countries} title="OCTAVOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/>
-                  <ProdeRoundCard matches={fixtureDataQarters} countriesData={Countries} title="CUARTOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
-                  <ProdeRoundCard matches={fixtureDataSemi} countriesData={Countries} title="SEMI FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
-                  <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
-                  <ProdeRoundCard matches={fixtureDataFinal} countriesData={Countries} title="FINAL" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase}/> 
+                  <ProdeRoundCard matches={fixtureDataOctavos} countriesData={Countries} title="OCTAVOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="OctavosCard"/>
+                  <ProdeRoundCard matches={fixtureDataQarters} countriesData={Countries} title="CUARTOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="QuartersCard"/> 
+                  <ProdeRoundCard matches={fixtureDataSemi} countriesData={Countries} title="SEMI FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="SemisCard"/> 
+                  <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="3rdAnd4thCard"/> 
+                  <ProdeRoundCard matches={fixtureDataFinal} countriesData={Countries} title="FINAL" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="FinalCard"/> 
                 </div>
                 <div className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
                   <input onClick={handleCheckboxChange2ndPh}  type="checkbox" className="w-8"/>
