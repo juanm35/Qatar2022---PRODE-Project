@@ -207,8 +207,8 @@
         "HomeTeam": "Holanda",
         "AwayTeam": "Ecuador",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 20,
