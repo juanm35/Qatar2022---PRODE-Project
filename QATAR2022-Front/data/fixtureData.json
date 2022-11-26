@@ -229,8 +229,8 @@
         "HomeTeam": "Tunez",
         "AwayTeam": "Australia",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 22,
