@@ -262,8 +262,8 @@
         "HomeTeam": "Argentina",
         "AwayTeam": "Mexico",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 25,
