@@ -240,8 +240,8 @@
         "HomeTeam": "Polonia",
         "AwayTeam": "Arabia Saudita",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 23,
