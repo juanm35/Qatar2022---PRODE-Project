@@ -273,8 +273,8 @@
         "HomeTeam": "Japon",
         "AwayTeam": "Costa Rica",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 26,
@@ -284,8 +284,8 @@
         "HomeTeam": "Belgica",
         "AwayTeam": "Marruecos",
         "Group": "groupF",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 27,
