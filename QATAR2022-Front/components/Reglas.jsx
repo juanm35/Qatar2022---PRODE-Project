@@ -33,7 +33,7 @@ function ReglasComponent(props) {
               <div className="pt-2 px-8 text-black indent-6 text-sm md:text-base">El puntaje máximo posible a sumar por cada partido es de <strong>30 Pts</strong>, desglosado de la siguiente forma:</div>
               <ul className="list-disc list-inside pl-4">
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Acertar el ganador-perdedor o si es empate suma <strong>16 Pts</strong>.</li>
-                <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Acertar la diferencia de gol del partido suma <strong>4 Pts</strong> extra. (Aplica siempre que el resultado no sea empate)</li>
+                <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Acertar la diferencia de gol del partido suma <strong>4 Pts</strong> extra. (Si el resultado es empate, solo se suman estos 4 puntos si se acierta el resultado exacto)</li>
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Acertar la cantidad de goles del equipo local suma <strong>5 Pts</strong> extra. (Se puede sumar independientemente de haber acertado el ganador-perdedor o la diferencia de gol)</li>
                 <li className="pt-2 md:pb-2 px-4 lg:px-12 text-black text-sm md:text-base">Acertar la cantidad de goles del equipo visitante suma <strong>5 Pts</strong> extra. (Se puede sumar independientemente de haber acertado el ganador-perdedor o la diferencia de gol)</li>
               </ul>
