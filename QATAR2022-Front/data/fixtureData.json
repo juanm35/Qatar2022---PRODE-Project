@@ -295,8 +295,8 @@
         "HomeTeam": "Croacia",
         "AwayTeam": "Canada",
         "Group": "groupF",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 4,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 28,
