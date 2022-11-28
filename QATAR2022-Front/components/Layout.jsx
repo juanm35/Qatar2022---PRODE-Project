@@ -84,7 +84,23 @@ export default function Layout({ children }) {
           </div>    
         </div>
         <main>{children}</main>
-        <div className="-mt-20 text-white pr-4 text-center"><div className="text-lg">with ⚽ by Juan & Fede</div><em>audited by Tomi</em></div>
+        <div className="-mt-20 text-white pr-4 text-center"><div className="text-lg">
+          with ⚽ by 
+          <Link href="https://github.com/juanm35" className="cursor-pointer">
+            &nbsp;Juan
+          </Link>
+            &nbsp;&
+          <Link href="https://github.com/federava" className="cursor-pointer">
+            &nbsp;Fede
+          </Link>
+          </div>
+          <em>
+            audited by 
+            <Link href="https://github.com/tmigone" className="cursor-pointer">
+              Tomi
+            </Link>
+          </em>
+        </div>
       </>
   )
 }
