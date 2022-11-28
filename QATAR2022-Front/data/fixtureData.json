@@ -317,8 +317,8 @@
         "HomeTeam": "Camerun",
         "AwayTeam": "Serbia",
         "Group": "groupG",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 3,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 30,
