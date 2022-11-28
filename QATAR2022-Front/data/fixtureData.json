@@ -328,8 +328,8 @@
         "HomeTeam": "Corea del sur",
         "AwayTeam": "Ghana",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 31,
