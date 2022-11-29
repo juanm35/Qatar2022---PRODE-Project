@@ -383,8 +383,8 @@
         "HomeTeam": "Gales",
         "AwayTeam": "Inglaterra",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 3
     },
     {
         "MatchNumber": 34,
@@ -394,8 +394,8 @@
         "HomeTeam": "Iran",
         "AwayTeam": "USA",
         "Group": "groupB",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 37,
