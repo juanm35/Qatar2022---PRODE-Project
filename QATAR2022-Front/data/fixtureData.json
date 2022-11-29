@@ -361,8 +361,8 @@
         "HomeTeam": "Ecuador",
         "AwayTeam": "Senegal",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 36,
@@ -372,8 +372,8 @@
         "HomeTeam": "Holanda",
         "AwayTeam": "Qatar",
         "Group": "groupA",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 33,
