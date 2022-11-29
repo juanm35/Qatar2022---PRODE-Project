@@ -235,8 +235,8 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               {!secondPhase?
               <div>
                 <div>       
-                  <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked} phase="FECHA1" key="Round1Card"/>
-                  <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked} key="Round2Card"/> 
+                  <ProdeRoundCard matches={fixtureDataFecha1} countriesData={Countries} title="FECHA 1" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked} phase="FINISHED" key="Round1Card"/>
+                  <ProdeRoundCard matches={fixtureDataFecha2} countriesData={Countries} title="FECHA 2" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked} phase="FINISHED" key="Round2Card"/> 
                   <ProdeRoundCard matches={fixtureDataFecha3} countriesData={Countries} title="FECHA 3" updateGuess={updateGuess} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked} key="Round3Card"/> 
                 </div> 
                 <div className="flex gap-2 justify-center my-8 bg-transparent/[0.5] w-fit mx-auto p-6 rounded-full">
