@@ -405,8 +405,8 @@
         "HomeTeam": "Australia",
         "AwayTeam": "Dinamarca",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 38,
@@ -416,8 +416,8 @@
         "HomeTeam": "Tunez",
         "AwayTeam": "Francia",
         "Group": "groupD",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 0
     },
     {
         "MatchNumber": 39,
