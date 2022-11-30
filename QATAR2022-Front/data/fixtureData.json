@@ -427,8 +427,8 @@
         "HomeTeam": "Polonia",
         "AwayTeam": "Argentina",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 40,
@@ -438,8 +438,8 @@
         "HomeTeam": "Arabia Saudita",
         "AwayTeam": "Mexico",
         "Group": "groupC",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 1,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 41,
