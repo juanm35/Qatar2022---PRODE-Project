@@ -471,8 +471,8 @@
         "HomeTeam": "Japon",
         "AwayTeam": "España",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 44,
@@ -482,8 +482,8 @@
         "HomeTeam": "Costa Rica",
         "AwayTeam": "Alemania",
         "Group": "groupE",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 4
     },
     {
         "MatchNumber": 45,
