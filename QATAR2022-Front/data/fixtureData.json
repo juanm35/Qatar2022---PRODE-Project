@@ -493,8 +493,8 @@
         "HomeTeam": "Ghana",
         "AwayTeam": "Uruguay",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 0,
+        "AwayTeamScore": 2
     },
     {
         "MatchNumber": 46,
@@ -504,8 +504,8 @@
         "HomeTeam": "Corea del sur",
         "AwayTeam": "Portugal",
         "Group": "groupH",
-        "HomeTeamScore": null,
-        "AwayTeamScore": null
+        "HomeTeamScore": 2,
+        "AwayTeamScore": 1
     },
     {
         "MatchNumber": 47,
