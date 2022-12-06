@@ -254,7 +254,7 @@ const fixtureDataFinal = eliminationPhaseMatchFixture.filter((match) => match.Ro
               </div> :
               <div> 
                 <div>       
-                  <ProdeRoundCard matches={fixtureDataOctavos} countriesData={Countries} title="OCTAVOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="OctavosCard"/>
+                  <ProdeRoundCard matches={fixtureDataOctavos} countriesData={Countries} title="OCTAVOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} phase="FINISHED" key="OctavosCard"/>
                   <ProdeRoundCard matches={fixtureDataQarters} countriesData={Countries} title="CUARTOS DE FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="QuartersCard"/> 
                   <ProdeRoundCard matches={fixtureDataSemi} countriesData={Countries} title="SEMI FINAL" updateGuess={updateGuessEliminationPhase} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="SemisCard"/> 
                   <ProdeRoundCard matches={fixtureData3rdAnd4th} countriesData={Countries} title="TERCER Y CUARTO PUESTO" updateGuess={updateGuessEliminationPhase} center={true} userCurrentGuess={messiRole.data? realResultsProcessed : userCurrentGuess} disableInput={checked2ndPhase} key="3rdAnd4thCard"/> 
