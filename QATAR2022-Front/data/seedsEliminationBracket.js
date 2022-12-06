@@ -48,8 +48,8 @@ export const eliminationPhaseRounds = [
           id: 7, //1F vs 2E
           date: 'Mar 6-Dic 12.00 hs',
           teams: [{ name: 'A definir', flag:'' }, { name: 'A definir', flag:'' }],
-          score: {home: '-', away: '-'},
-          penalties:  {home: '-', away: '-'}
+          score: {home: 0, away: 0},
+          penalties:  {home: 3, away: 0}
         },
         {
           id: 8, //1H vs 2G
