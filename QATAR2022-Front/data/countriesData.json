@@ -125,7 +125,7 @@
         {"name": "Iran", "flag": "/flags/ir.svg"},
         {"name": "USA", "flag": "/flags/us.svg"},
         {"name": "Gales", "flag": "/flags/gb-wls.svg"},
-        {"name": "Argentina", "flag": "@public/ar.svg.svg"},
+        {"name": "Argentina", "flag": "@public/ar.svg"},
         {"name": "Arabia Saudita", "flag": "/flags/sa.svg"},
         {"name": "Mexico", "flag": "/flags/mx.svg"},
         {"name": "Polonia", "flag": "/flags/pl.svg"},
