@@ -100,7 +100,7 @@ export const eliminationPhaseRounds = [
           id: 1, //Cuartos1 vs Cuartos2
           date: 'Mar 13-Dic 16.00 hs',
           teams: [{ name: 'A definir', flag:'' }, { name: 'A definir', flag:'' }],
-          score: {home: '-', away: '-'},
+          score: {home: 3, away: 0},
           penalties:  {home: '-', away: '-'}
         },
         {
