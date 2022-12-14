@@ -353,13 +353,13 @@ let eliminationPhaseFixture = matchResultsEliminationPhase
     eliminationPhaseRounds[3].seeds[0].teams[1].flag = matchS2.teams[0].flag
     // Setting fixture for miProde cards
     eliminationPhaseFixture[15].AwayTeam = matchS2.teams[0].name
-    eliminationPhaseFixture[14].AwayTeam = matchS1.teams[1].name
+    eliminationPhaseFixture[14].AwayTeam = matchS2.teams[1].name
   } else if ((matchS2.score.home < matchS2.score.away || matchS2.penalties.home < matchS2.penalties.away) ?? false) {
     eliminationPhaseRounds[3].seeds[0].teams[1].name = matchS2.teams[1].name
     eliminationPhaseRounds[3].seeds[0].teams[1].flag = matchS2.teams[1].flag
     // Setting fixture for miProde cards
     eliminationPhaseFixture[15].AwayTeam = matchS2.teams[1].name
-    eliminationPhaseFixture[14].AwayTeam = matchS1.teams[0].name
+    eliminationPhaseFixture[14].AwayTeam = matchS2.teams[0].name
   }
 
 
