@@ -119,8 +119,8 @@ export const eliminationPhaseRounds = [
           id: 3, //Semi1 vs Semi2
           date: 'Dom 18-Dic 12.00 hs',
           teams: [{ name: 'A definir', flag:'' }, { name: 'A definir', flag:'' }],
-          score: {home: '-', away: '-'},
-          penalties:  {home: '-', away: '-'}
+          score: {home: 3, away: 3},
+          penalties:  {home: 4, away: 2}
         },
       ],
     }
